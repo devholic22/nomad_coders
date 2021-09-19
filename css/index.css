@@ -1,0 +1,39 @@
+.main-content__logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+}
+.main-content {
+  text-align: center;
+  margin-top: 187px;
+  margin-bottom: 260px;
+}
+.main-content__header {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.main-content__text {
+  opacity: 0.6;
+}
+#login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 60px;
+}
+#login-form input[type="submit"] {
+  background-color: #06c755;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 20px;
+}
+#login-form input[value="가입"] {
+  background-color: white;
+  color: black;
+  font-weight: 600;
+}
