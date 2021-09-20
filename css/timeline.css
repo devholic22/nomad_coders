@@ -1,0 +1,32 @@
+.timeline-story-content {
+  display: flex;
+  padding-top: 10px;
+  padding-left: 30px;
+}
+.timeline-story-content__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.timeline-story-content__logo {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #06c755;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.timeline-story-content__logo i,
+.timeline-content__logo i {
+  color: #06c755;
+}
+.timeline-story-content__title {
+  font-size: 15px;
+  opacity: 0.8;
+}
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+}

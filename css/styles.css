@@ -6,6 +6,7 @@
 @import "home.css";
 @import "header-bar.css";
 @import "call.css";
+@import "timeline.css";
 body {
   font-family: "Nanum Gothic", sans-serif;
   height: 100vh;
