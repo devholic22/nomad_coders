@@ -1,0 +1,19 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.nav-list {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  box-shadow: 0px 0px 3px gray;
+}
+.nav-list__item a {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.nav-list__item i {
+  margin-bottom: 10px;
+}
