@@ -136,3 +136,10 @@ input {
   border: none;
   cursor: pointer;
 }
+.contents {
+  margin-top: 34px;
+}
+i,
+img {
+  cursor: pointer;
+}

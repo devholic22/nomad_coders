@@ -1,13 +1,15 @@
-@import "reset.css";
-@import "status-bar.css";
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
-@import "index.css";
-@import "nav-bar.css";
-@import "home.css";
-@import "header-bar.css";
-@import "call.css";
-@import "timeline.css";
+/*Components*/
+@import "components/status-bar.css";
+@import "components/header-bar.css";
+@import "components/nav-bar.css";
+/*Screens*/
+@import "screens/index.css";
+@import "screens/home.css";
+@import "screens/timeline.css";
+@import "screens/call.css";
+@import "screens/profile.css";
+@import "reset.css";
 body {
   font-family: "Nanum Gothic", sans-serif;
-  height: 100vh;
 }
