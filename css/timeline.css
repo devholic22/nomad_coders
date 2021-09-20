@@ -2,6 +2,7 @@
   display: flex;
   padding-top: 10px;
   padding-left: 30px;
+  padding-bottom: 200px;
 }
 .timeline-story-content__column {
   display: flex;
@@ -29,4 +30,21 @@
 .timeline-content {
   display: flex;
   flex-direction: column;
+  text-align: center;
+}
+.timeline-content__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.timeline-content__subtitle {
+  color: gray;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+.timeline-content__logo {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  margin-right: 30px;
 }
