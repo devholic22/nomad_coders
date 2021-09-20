@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="css/styles.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="shortcut icon"
       href="https://d.line-scdn.net/n/_s1/_0/linecorp-web-uit/images/favicon_v2.ico"
       type="image/x-icon"
     />
-    <title>LINE CLONE</title>
+    <title>INDEX - LINE CLONE CODING</title>
   </head>
   <body>
     <div class="status-bar">
@@ -24,17 +24,19 @@
         <span>100%</span> <i class="fas fa-battery-full"></i>
       </div>
     </div>
-    <main class="main-content">
-      <img src="img/logo.png" class="main-content__logo" />
-      <span class="main-content__header"><h1>환영합니다.</h1></span>
-      <span class="main-content__text"
+    <div class="main-content">
+      <img src="img/logo.png" alt="" class="main-content__logo" />
+      <span class="main-content__title">환영합니다.</span>
+      <span class="main-content__subtitle"
         >무료 메시지와 영상통화, 음성통화를 부담 없이 즐겨보세요!</span
       >
-    </main>
-    <form id="login-form" action="home.html">
-      <input type="submit" value="로그인" />
-      <input type="submit" value="가입" />
-    </form>
+      <div class="main-content__btn">
+        <form action="home.html" class="main-content__btn__form">
+          <input type="submit" value="로그인" />
+          <input type="submit" value="가입" />
+        </form>
+      </div>
+    </div>
     <script
       src="https://kit.fontawesome.com/6478f529f2.js"
       crossorigin="anonymous"
