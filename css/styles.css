@@ -5,6 +5,7 @@
 @import "nav-bar.css";
 @import "home.css";
 @import "header-bar.css";
+@import "call.css";
 body {
   font-family: "Nanum Gothic", sans-serif;
   height: 100vh;
