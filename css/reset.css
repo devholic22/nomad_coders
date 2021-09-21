@@ -136,6 +136,9 @@ input {
   border: none;
   cursor: pointer;
 }
+input:focus {
+  outline: none;
+}
 .contents {
   margin-top: 34px;
 }

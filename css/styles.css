@@ -4,6 +4,7 @@
 @import "components/header-bar.css";
 @import "components/nav-bar.css";
 @import "components/contents.css";
+@import "components/search.css";
 /*Screens*/
 @import "screens/index.css";
 @import "screens/home.css";
