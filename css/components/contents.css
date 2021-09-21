@@ -1,0 +1,39 @@
+.center-contents {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center-contents__text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 25px;
+  align-items: center;
+}
+.center-contents__text__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.center-contents__text__subtitle {
+  color: gray;
+  opacity: 0.8;
+  width: 60%;
+}
+.center-contents__sub {
+  width: 40%;
+}
+.center-contents__sub form {
+  display: flex;
+  flex-direction: column;
+}
+.center-contents__sub form input {
+  background-color: white;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 16px 12px;
+  font-size: 18px;
+  font-weight: 900;
+}
