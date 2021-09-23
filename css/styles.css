@@ -11,6 +11,7 @@
 @import "screens/timeline.css";
 @import "screens/call.css";
 @import "screens/profile.css";
+@import "screens/dialogue.css";
 @import "reset.css";
 body {
   font-family: "Nanum Gothic", sans-serif;
