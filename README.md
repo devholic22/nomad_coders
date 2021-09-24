@@ -1,6 +1,6 @@
 # line_clone
 노마드코더의 코코아 클론 강의를 바탕으로 혼자 만들어보는 라인 클론 레포지토리  
-깃허브 사이트: ![url](https://devholic22.github.io/line_clone/)
+[깃허브 사이트](https://devholic22.github.io/line_clone/)   
 ## Preview Pages
 ![index](https://user-images.githubusercontent.com/90085154/134158808-cf0fa785-2feb-434e-9f71-44b8a010ec2f.PNG)
 ![home](https://user-images.githubusercontent.com/90085154/134690059-d8354c13-e729-447d-86bb-3fac9cca3aca.PNG)
