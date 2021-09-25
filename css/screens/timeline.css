@@ -1,3 +1,6 @@
+.margin_icon {
+  margin-right: var(--timeline-icon-margin);
+}
 .timeline-story-content {
   display: flex;
   padding-top: 10px;
