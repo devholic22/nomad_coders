@@ -3,17 +3,17 @@
   bottom: 0;
   width: 100%;
 }
-.nav-list {
+.nav-bar__list {
   display: flex;
   justify-content: space-around;
   padding: 15px;
-  box-shadow: 0px 0px 3px gray;
+  box-shadow: var(--nav-bar-shadow);
 }
-.nav-list__item a {
+.nav-bar__list__column a {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
-.nav-list__item i {
+.nav-bar__list__column i {
   margin-bottom: 10px;
 }

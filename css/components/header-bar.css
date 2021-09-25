@@ -1,11 +1,8 @@
-.header-bar {
+.section-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 25px;
-}
-.header-bar__column {
-  width: 50%;
 }
 .header-bar__column:last-child {
   display: flex;

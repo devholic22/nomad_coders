@@ -19,8 +19,8 @@
   margin-bottom: 10px;
 }
 .timeline-story-content__logo i,
-.timeline-content__logo i {
-  color: #06c755;
+.timeline-plus__button i {
+  color: var(--timeline-color);
 }
 .timeline-story-content__title {
   font-size: 15px;
@@ -41,9 +41,8 @@
   opacity: 0.8;
   margin-bottom: 5px;
 }
-.timeline-content__logo {
+.timeline-plus__button {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 20px;
-  margin-right: 30px;
+  padding: 20px;
 }
