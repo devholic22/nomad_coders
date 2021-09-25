@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @import "variables.css";
 /*Components*/
-@import "components/status-bar.css";
 @import "components/header-bar.css";
+@import "components/section-bar.css";
 @import "components/nav-bar.css";
 @import "components/contents.css";
 @import "components/search.css";

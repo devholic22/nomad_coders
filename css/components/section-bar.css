@@ -1,0 +1,15 @@
+.section-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--section-bar-padding);
+}
+.section-bar__title {
+  font-size: var(--section-bar-title-size);
+  font-weight: var(--section-bar-title-weight);
+}
+.section-bar__column:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
