@@ -1,21 +1,20 @@
 .center-contents {
-  margin-top: 200px;
+  margin-top: var(--center-contents-margin);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 .center-contents__text {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: var(--center-contents-text-margin);
   align-items: center;
 }
 .center-contents__text__title {
   font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 15px;
+  font-weight: var(--font-bold-weight);
+  margin-bottom: var(--center-contents-title-margin);
 }
 .center-contents__text__subtitle {
   color: gray;
@@ -31,9 +30,12 @@
 }
 .center-contents__sub form input {
   background-color: white;
-  border: 1px solid #f3f3f3;
+  border: var(--center-contents-button-border);
   border-radius: 10px;
   padding: 16px 12px;
   font-size: 18px;
   font-weight: 900;
+}
+.default_center {
+  margin-top: var(--default-center-contents-margin);
 }

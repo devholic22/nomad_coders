@@ -2,8 +2,13 @@
   --header-bar-color: #d9d9d9;
   --section-bar-padding: 25px;
   --section-bar-title-size: 30px;
-  --section-bar-title-weight: 600;
+  --font-bold-weight: 600;
   --nav-bar-shadow: 0px 0px 3px gray;
   --timeline-color: #06c755;
   --timeline-icon-margin: 20px;
+  --center-contents-margin: 238px;
+  --default-center-contents-margin: 338px;
+  --center-contents-text-margin: 25px;
+  --center-contents-title-margin: 15px;
+  --center-contents-button-border: 1px solid #f3f3f3;
 }
