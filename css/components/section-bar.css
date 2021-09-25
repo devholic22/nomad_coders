@@ -8,8 +8,7 @@
   font-size: var(--section-bar-title-size);
   font-weight: var(--section-bar-title-weight);
 }
-.section-bar__column:last-child {
+.section-bar__icons {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
 }
