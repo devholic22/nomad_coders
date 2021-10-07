@@ -1,3 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap");
+
+body {
+  background: url("../bg.jpg") center/cover no-repeat;
+  background-attachment: fixed;
+}
+#username {
+  color: white;
+  font-size: 50px;
+  font-family: "Nanum Brush Script", cursive;
+  text-align: center;
+}
+#clock {
+  text-align: center;
+}
+#clock,
+#question {
+  font-family: "Ephesis", cursive;
+  color: white;
+  font-size: 50px;
+  font-weight: 600;
+}
+#question {
+  margin-bottom: 30px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form input {
+  border: none;
+  border-bottom: 2px solid white;
+  background: transparent;
+  width: 50%;
+  font-size: 50px;
+  text-align: center;
+  color: white;
+  font-family: "Nanum Brush Script", cursive;
+}
 .hidden {
   display: none;
 }
