@@ -39,6 +39,9 @@ form input {
   color: white;
   font-family: "Nanum Brush Script", cursive;
 }
+input:focus {
+  outline: none;
+}
 .hidden {
   display: none;
 }
