@@ -1,0 +1,14 @@
+.todo_list {
+  display: flex;
+  justify-content: space-around;
+  color: wheat;
+  border: 1px solid red;
+  font-size: 25px;
+}
+.list_column {
+  width: 33%;
+  border: 1px solid blue;
+}
+.list_column ul {
+  white-space: normal;
+}

@@ -1,9 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap");
-
+@import "./todo_list.css";
+h2 {
+  margin-bottom: 0;
+}
 body {
   background: url("../bg.jpg") center/cover no-repeat;
   background-attachment: fixed;
+}
+.quote_and_author {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: 25px;
 }
 #username {
   color: white;
@@ -28,6 +38,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 }
 form input {
   border: none;
@@ -36,12 +47,13 @@ form input {
   width: 50%;
   font-size: 50px;
   text-align: center;
-  color: white;
+  color: black;
   font-family: "Nanum Brush Script", cursive;
 }
 input:focus {
   outline: none;
 }
+
 .hidden {
   display: none;
 }
