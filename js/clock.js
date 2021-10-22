@@ -1,4 +1,4 @@
-const clock = document.querySelector("#clock");
+const clock = document.querySelector(".status-bar__time");
 
 function getTime() {
   const date = new Date();
