@@ -127,22 +127,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-a {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
-input {
-  border: none;
-  cursor: pointer;
-}
-input:focus {
-  outline: none;
-}
-.contents {
-  margin-top: 34px;
-}
-i,
-img {
-  cursor: pointer;
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
