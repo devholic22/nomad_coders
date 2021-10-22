@@ -139,3 +139,6 @@ a:visited {
   text-decoration: none;
   color: initial;
 }
+i {
+  cursor: pointer;
+}
