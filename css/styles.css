@@ -1,5 +1,7 @@
 @import "./reset.css";
 @import "./components/status-bar.css";
 @import "./components/nav-bar.css";
+@import "./components/title-bar.css";
 @import "./screens/index.css";
 @import "./screens/home.css";
+@import "./screens/talks.css";

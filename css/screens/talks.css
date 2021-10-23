@@ -1,0 +1,62 @@
+.talks-main {
+  height: 89%;
+}
+.talks-input {
+  display: flex;
+  justify-content: center;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.talks-input__search {
+  width: 100%;
+  background-color: #f6f6f6;
+  border-style: none;
+  font-size: 20px;
+  border-radius: 5px;
+  height: 30px;
+}
+.talks-lists {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  box-sizing: border-box;
+}
+.talks-lists__info {
+  display: flex;
+  align-items: center;
+}
+.talks-lists__img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.talks-lists__texts {
+  display: flex;
+  flex-direction: column;
+}
+.talks-lists__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.talks-lists__sub {
+  color: gray;
+  width: 90%;
+  font-size: 15px;
+}
+.talks-lists__icon {
+  color: white;
+  background-color: #06c755;
+  border-radius: 50%;
+  width: 30px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+}
