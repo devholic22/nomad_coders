@@ -5,5 +5,6 @@
 @import "./screens/index.css";
 @import "./screens/home.css";
 @import "./screens/talks.css";
+@import "./screens/talk.css";
 @import "./screens/timeline.css";
 @import "./screens/call.css";

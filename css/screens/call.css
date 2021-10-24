@@ -11,10 +11,10 @@
 .call-welcome__title {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .call-welcome__sub {
-  width: 90%;
+  width: 65%;
   text-align: center;
   color: gray;
   margin-bottom: 20px;

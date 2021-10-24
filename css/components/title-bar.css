@@ -8,8 +8,6 @@
 }
 .title-bar__column {
   font-size: 23px;
-}
-.title-bar__column {
   display: flex;
   align-items: center;
 }
