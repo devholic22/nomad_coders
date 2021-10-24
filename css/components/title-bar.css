@@ -9,9 +9,13 @@
 .title-bar__column {
   font-size: 23px;
 }
+.title-bar__column {
+  display: flex;
+  align-items: center;
+}
 .title-bar__text {
   font-weight: 600;
 }
 .title-bar__column i {
-  margin-left: 5px;
+  margin: 0px 10px;
 }
