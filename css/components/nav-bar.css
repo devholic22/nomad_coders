@@ -18,3 +18,20 @@
   justify-content: space-evenly;
   height: 100%;
 }
+.nav-bar__lists a:nth-child(2) {
+  position: relative;
+}
+.talk-dot {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -6%;
+  right: -18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}

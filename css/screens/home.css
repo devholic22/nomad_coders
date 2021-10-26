@@ -70,7 +70,7 @@
   justify-content: space-between;
 }
 .home-main__else__rows:nth-child(2) {
-  margin: 15px 0;
+  margin: 20px 0;
 }
 .home-main__else__sub {
   color: gray;
@@ -91,7 +91,7 @@
 .home-main__else__rows:nth-child(4) {
   flex-direction: column;
   justify-content: center;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .home-main__else__img {
   width: 100px;
