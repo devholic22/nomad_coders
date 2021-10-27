@@ -58,3 +58,17 @@
   right: 20px;
   font-size: 60px;
 }
+.timeline-plus:hover {
+  animation: sizeCircle 2s ease-in-out infinite;
+}
+@keyframes sizeCircle {
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+  50% {
+    transform: scaleX(1.5) scaleY(1.5);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}
