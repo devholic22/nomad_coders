@@ -1,3 +1,4 @@
+const downToggleBar = document.querySelector(".toggle-bar");
 const downToggle = document.querySelector(".down-toggle");
 const friend = document.getElementById("home-friend");
 
@@ -19,4 +20,4 @@ function handleToggle() {
   }
 }
 
-downToggle.addEventListener("click", handleToggle);
+downToggleBar.addEventListener("click", handleToggle);
