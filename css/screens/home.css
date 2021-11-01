@@ -39,7 +39,6 @@
 }
 
 .home-main__sub {
-  height: 14%;
   padding: 5px 10px;
   box-sizing: border-box;
   display: flex;
@@ -49,6 +48,7 @@
 .home-main__sub__rows {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 .home-main__search {
   background-color: #f6f6f6;
@@ -61,7 +61,6 @@
 }
 
 .home-main__else {
-  height: 74%;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -94,8 +93,8 @@
   margin: 20px 0;
 }
 .home-main__else__img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 .home-main__else__img__text {
   margin-top: 10px;
@@ -108,4 +107,17 @@
 .info-text {
   margin-left: 3px;
   font-size: 13px;
+}
+.friends {
+  justify-content: initial;
+  align-items: center;
+}
+.home-friends__img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.hidden {
+  display: none;
 }
