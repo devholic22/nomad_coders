@@ -20,6 +20,10 @@
   border-radius: 50%;
   margin-right: 20px;
 }
+.home-main__top__column:last-child {
+  display: flex;
+  align-items: center;
+}
 .home-main__top__column:last-child i {
   margin-left: 10px;
 }

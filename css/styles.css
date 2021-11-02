@@ -8,6 +8,7 @@
 @import "./screens/talk.css";
 @import "./screens/timeline.css";
 @import "./screens/call.css";
+@import "./screens/setting.css";
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 html,
 body {
