@@ -2,6 +2,8 @@
 @import "./components/status-bar.css";
 @import "./components/nav-bar.css";
 @import "./components/title-bar.css";
+@import "./components/no-mobile.css";
+
 @import "./screens/index.css";
 @import "./screens/home.css";
 @import "./screens/talks.css";
@@ -9,7 +11,9 @@
 @import "./screens/timeline.css";
 @import "./screens/call.css";
 @import "./screens/setting.css";
+
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+
 html,
 body {
   font-family: "Nanum Gothic", sans-serif;
