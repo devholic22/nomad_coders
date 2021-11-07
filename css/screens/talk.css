@@ -2,6 +2,19 @@
   height: 89%;
   background-color: #a1b5da;
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+.talk-box__contents {
+  animation: fadeIn 1s ease-in-out;
+}
+
 .talk-time {
   display: flex;
   flex-direction: column;
