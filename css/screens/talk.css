@@ -129,7 +129,9 @@
   background-color: #f6f6f6;
   padding-left: 20px;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
 }
+
 .input-bar__smile {
   position: absolute;
   right: 5px;
@@ -140,4 +142,12 @@
   width: 10%;
   display: flex;
   justify-content: center;
+}
+
+.input-bar:focus-within i {
+  opacity: 0;
+}
+.input-bar:focus-within .input-bar__input {
+  width: 95vw;
+  transform: translateX(-30%);
 }
