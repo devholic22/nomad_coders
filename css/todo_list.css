@@ -1,14 +1,38 @@
 .todo_list {
+  color: black;
+  border: 5px solid gray;
+  border-radius: 10px;
   display: flex;
-  justify-content: space-around;
-  color: wheat;
-  border: 1px solid red;
-  font-size: 25px;
+  margin: 0px 150px;
+}
+@keyframes sizeUpList {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
 }
 .list_column {
   width: 33%;
-  border: 1px solid blue;
+  border: 5px solid tomato;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  height: 300px;
+  overflow-y: scroll;
 }
-.list_column ul {
-  white-space: normal;
+.list_column::-webkit-scrollbar {
+  display: none;
+}
+.list_column:hover {
+  transform: scale(1.2);
+  animation: sizeUpList 1s ease-in-out;
+}
+
+.list_column > span {
+  display: flex;
+  justify-content: center;
+}
+#prepare li > span {
+  word-break: break-all;
 }
