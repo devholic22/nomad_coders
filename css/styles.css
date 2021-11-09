@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @import "./todo_list.css";
 h2 {
   margin-bottom: 0;
@@ -12,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  font-family: "Nanum Brush Script", cursive;
+  font-family: "Nanum Gothic", sans-serif;
   font-size: 25px;
 }
 #username {
