@@ -1,13 +1,14 @@
 {
   "name": "wetube_clone",
   "version": "1.0.0",
+  "type" : "module",
   "description": "youtube clone coding by Nomad Coders",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devholic22/wetube_clone.git"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "nodemon --exec babel-node src/server.js"
   },
   "author": "Hyunjoon Choi",
   "license": "MIT",
