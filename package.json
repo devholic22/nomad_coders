@@ -1,7 +1,7 @@
 {
   "name": "wetube_clone",
   "version": "1.0.0",
-  "type" : "module",
+  "type": "module",
   "description": "youtube clone coding by Nomad Coders",
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/devholic22/wetube_clone#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
