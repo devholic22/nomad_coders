@@ -8,7 +8,7 @@
     "url": "git+https://github.com/devholic22/wetube_clone.git"
   },
   "scripts": {
-    "start": "nodemon -L --exec babel-node index.js"
+    "start": "nodemon -L --exec babel-node src/server.js"
   },
   "author": "Hyunjoon Choi",
   "license": "MIT",
