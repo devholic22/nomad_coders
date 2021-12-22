@@ -2,15 +2,20 @@
   "name": "wetube_clone",
   "version": "1.0.0",
   "description": "The best way to watch videos.",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devholic22/wetube_clone.git"
+  },
+  "scripts": {
+    "start": "node index.js"
   },
   "author": "Hyunjoon Choi",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/devholic22/wetube_clone/issues"
   },
-  "homepage": "https://github.com/devholic22/wetube_clone#readme"
+  "homepage": "https://github.com/devholic22/wetube_clone#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
