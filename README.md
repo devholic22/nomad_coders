@@ -8,3 +8,19 @@
 ## 목표
 
 노마드코더의 유튜브 클론코딩 강의를 통해 Node.js, Express, Pug, MongoDB 등의 개념을 학습한다.
+
+## URL 구성
+
+/ -> Home
+/join -> Join
+/login -> Login
+/search -> Search
+
+/users/edit -> Edit user
+/users/delete -> Delete user
+
+/videos/watch -> Watch Video
+/videos/edit -> Edit Video
+/videos/delete -> Delete Video
+/videos/comments -> Comment on a video
+/videos/comments/delete -> Delete A Comment of a Video
