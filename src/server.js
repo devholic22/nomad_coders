@@ -28,6 +28,11 @@ app.use((req, res, next) => {
   });
 });
 
+app.get("/add-one", (req, res, next) => {
+  req.session.counts += 1;
+  return res.send(`${req.session.id}\n${req.session.counts}`);
+});
+
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
