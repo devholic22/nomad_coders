@@ -3,7 +3,7 @@ import { edit, remove } from "../controllers/userController";
 
 const userRouter = express.Router();
 
-userRouter.get("/edit", edit);remove
-userRouter.get("/delete", handleDelete);
+userRouter.get("/edit", edit);
+userRouter.get("/delete", remove);
 
 export default userRouter;
