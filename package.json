@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "wetube clone by nomad coders",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "nodemon --exec babel-node src/server.js"
   },
   "repository": {
     "type": "git",
