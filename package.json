@@ -1,0 +1,19 @@
+{
+  "name": "wetube_clone",
+  "version": "1.0.0",
+  "description": "wetube clone by nomad coders",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devholic22/wetube_clone.git"
+  },
+  "author": "Hyunjoon Choi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devholic22/wetube_clone/issues"
+  },
+  "homepage": "https://github.com/devholic22/wetube_clone#readme"
+}
