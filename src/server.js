@@ -4,6 +4,7 @@ import session from "express-session";
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
+import { localsMiddleware } from "./middlewares";
 
 const app = express();
 const logger = morgan("dev");
@@ -21,6 +22,7 @@ app.use(
   })
 );
 
+/*
 app.use((req, res, next) => {
   // console.log(req);
   req.sessionStore.all((error, sessions) => {
@@ -28,6 +30,7 @@ app.use((req, res, next) => {
     next();
   });
 });
+*/
 
 // session.id는 session object 안에서 sessionID를 쓰고 싶은 사람들을 위해 만들어진 속성이다.
 // 따라서 session.id와 sessionID의 값은 동일하다.
@@ -36,6 +39,9 @@ app.use((req, res, next) => {
 // 세션은 서버에서 제공해주는 데이터이고, 쿠키는 서버에서 브라우저에게 제공한 식별을 위해 사용되는 데이터이다.
 // req.sessionStore에서 처음 한 번 undefined 나온 이유는
 // 서버 측에서 클라이언트 (브라우저)에게 세션을 제공했던 적이 없기 때문이다.
+
+app.use(localsMiddleware);
+
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
