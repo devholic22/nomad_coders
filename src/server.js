@@ -21,7 +21,6 @@ app.use(
   })
 );
 
-/*
 app.use((req, res, next) => {
   // console.log(req);
   req.sessionStore.all((error, sessions) => {
@@ -29,7 +28,7 @@ app.use((req, res, next) => {
     next();
   });
 });
-*/
+
 // session.id는 session object 안에서 sessionID를 쓰고 싶은 사람들을 위해 만들어진 속성이다.
 // 따라서 session.id와 sessionID의 값은 동일하다.
 // 쿠키는 session object 안에 포함되어 있다.
