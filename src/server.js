@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: "Hello!",
-    resave: true,
-    saveUninitialized: true,
+    resave: false, // resave: 모든 request마다 세션의 변경사항에 상관 없이 세션을 저장한다. 이는 익명 사용자도 저장하므로 좋지 않다.
+    saveUninitialized: false, // saveUninitialized : 아무 내용이 없는 session을 (초기화되지 않은) 저장하는지 결정한다.
     store: MongoStore.create({ mongoUrl: "mongodb://127.0.0.1:27017/wetube" })
   })
 );
