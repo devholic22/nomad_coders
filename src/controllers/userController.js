@@ -120,11 +120,33 @@ export const finishGithubLogin = async (req, res) => {
       })
     ).json();
     // email은 primary와 verified가 모두 true여야 한다.
-    const email = emailData.find(
-      (email) => email.primary === true && email.verified === true
+    const emailObj = emailData.find(
+      (emailObj) => emailObj.primary === true && emailObj.verified === true
     );
-    if (!email) {
+    if (!emailObj) {
       return res.redirect("/login");
+    }
+    // database에 github의 email로 등록된 user가 있는지 검사한다.
+    const existingUser = await User.findOne({ email: emailObj.email });
+    if (existingUser) {
+      // github email로 등록되었던 유저가 있다면 login 가능하도록 설정
+      req.session.loggedIn = true;
+      req.session.user = existingUser;
+      return res.redirect("/");
+    } else {
+      // 등록되었던 email이 아니므로 계정을 생성해야 한다.
+      // 깃허브로 생성해서 비밀번호는 만들 수 없음
+      const user = await User.create({
+        name: userData.name,
+        username: userData.login,
+        email: emailObj.email,
+        password: "",
+        socialOnly: true,
+        location: userData.location
+      });
+      req.session.loggedIn = true;
+      req.session.user = user;
+      return res.redirect("/");
     }
   } else {
     // access token은 한 번만 사용된다.
