@@ -1,5 +1,6 @@
 import User from "../models/User";
 import bcrypt from "bcrypt";
+import fetch from "node-fetch";
 
 export const getJoin = (req, res) =>
   res.render("join", { pageTitle: "create Account" });
@@ -88,15 +89,31 @@ export const finishGithubLogin = async (req, res) => {
   const finalUrl = `${baseUrl}?${params}`;
   // fetch는 무언가를 하고 싶거나 무언가를 가져오고 싶을 때 사용한다
   // 그런데 nodeJS에서는 fetch가 작동하지 않는다.
-  const data = await fetch(finalUrl, {
-    method: "POST",
-    headers: {
-      Accept: "application/json"
-    }
-  });
+  // node-fetch 패키지 설치
+  const tokenRequest = await (
+    await fetch(finalUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json"
+      }
+    })
+  ).json();
   // 만들어진 finalUrl에 method와 headers를 설정한 뒤 POST 요청을 보낸다
-
-  const json = await data.json();
+  if ("access_token" in tokenRequest) {
+    // access token
+    const { access_token } = tokenRequest;
+    const userRequest = await (
+      await fetch("https://api.github.com/user", {
+        headers: {
+          Authorization: `token ${access_token}`
+        }
+      })
+    ).json();
+    console.log(userRequest);
+  } else {
+    // access token은 한 번만 사용된다.
+    return res.redirect("/login");
+  }
 };
 
 export const logout = (req, res) => res.send("Log out");
