@@ -94,26 +94,43 @@ export const finishGithubLogin = async (req, res) => {
     await fetch(finalUrl, {
       method: "POST",
       headers: {
-        Accept: "application/json"
+        Accept: "application/json" // GitHub가 finalUrl을 json 형태로 인식하게 하기 위해 설정
+        // 왜냐하면 access_token을 따로 분리해야 하기 때문이다.
       }
     })
-  ).json();
+  ).json(); // fetch 시 await 필요, json 시 await
   // 만들어진 finalUrl에 method와 headers를 설정한 뒤 POST 요청을 보낸다
   if ("access_token" in tokenRequest) {
     // access token
     const { access_token } = tokenRequest;
-    const userRequest = await (
-      await fetch("https://api.github.com/user", {
+    const apiUrl = "https://api.github.com";
+    const userData = await (
+      await fetch(`${apiUrl}/user`, {
+        headers: {
+          Authorization: `token ${access_token}`
+        }
+        // headers에 Authorization: token OAUTH-TOKEN 필요함
+      })
+    ).json(); // 다시 json 형태로 변형
+    const emailData = await (
+      await fetch(`${apiUrl}/user/emails`, {
         headers: {
           Authorization: `token ${access_token}`
         }
       })
     ).json();
-    console.log(userRequest);
+    // email은 primary와 verified가 모두 true여야 한다.
+    const email = emailData.find(
+      (email) => email.primary === true && email.verified === true
+    );
+    if (!email) {
+      return res.redirect("/login");
+    }
   } else {
     // access token은 한 번만 사용된다.
     return res.redirect("/login");
   }
+  // access token은 scope 내용에 대해서만 가능하도록 해 준다.
 };
 
 export const logout = (req, res) => res.send("Log out");
