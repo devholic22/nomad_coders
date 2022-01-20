@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 // 서버 측에서 클라이언트 (브라우저)에게 세션을 제공했던 적이 없기 때문이다.
 
 app.use(localsMiddleware);
-
+app.use("/uploads", express.static("uploads")); // 브라우저에게 폴더를 노출시킨다.
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
