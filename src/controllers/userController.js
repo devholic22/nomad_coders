@@ -201,8 +201,38 @@ export const getChangePassword = (req, res) => {
   return res.render("users/change-password", { pageTitle: "Change Password" });
 };
 
-export const postChangePassword = (req, res) => {
+export const postChangePassword = async (req, res) => {
+  const {
+    session: {
+      user: { _id, password }
+    },
+    body: { oldPassword, newPassword, checkPassword }
+  } = req;
+  const isSame = await bcrypt.compare(oldPassword, password);
+  if (!isSame) {
+    return res.status(400).render("users/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "⚠️ The current password is incorrect."
+    });
+  }
+  if (oldPassword === newPassword || oldPassword === checkPassword) {
+    return res.status(400).render("users/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "⚠️ New password must different with old password."
+    });
+  }
+  if (newPassword !== checkPassword) {
+    return res.status(400).render("users/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "⚠️ The password does not match the confirmation."
+    });
+  }
+  const user = await User.findById(_id);
+  user.password = newPassword;
+  await user.save();
+  req.session.user.password = newPassword; // 비밀번호 또한 세션에 있는 값을 바꿔줘야 한다.
   // send notification
+  req.session.destroy();
   return res.redirect("/");
 };
 
