@@ -168,7 +168,8 @@ export const postEdit = async (req, res) => {
       // get data from session
       user: { _id }
     },
-    body: { name, email, username, password } // get data form
+    body: { name, email, username, password },
+    file // get data form
   } = req; // form에 작성된 user의 info 및 세션에 있는 user의 id를 불러옴
 
   const originUsername = res.locals.loggedInUser.username;

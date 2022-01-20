@@ -1,3 +1,5 @@
+import multer from "multer";
+
 // request에 있는 user를 response의 locals object에 담는 middleware
 // res.locals는 어느 view 에서든 사용할 수 있다.
 export const localsMiddleware = (req, res, next) => {
@@ -25,3 +27,6 @@ export const publicOnlyMiddleware = (req, res, next) => {
     return res.redirect("/");
   }
 };
+
+// 파일 업로드 관련 middleware
+export const uploadFiles = multer({ dest: "uploads/" });
