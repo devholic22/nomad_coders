@@ -177,6 +177,7 @@ export const postEdit = async (req, res) => {
 
   if (isExists && (originUsername !== username || originEmail !== email)) {
     return res.status(400).render("edit-profile", {
+      pageTitle: "Edit Profile",
       errorMessage: "⚠️ This username/email is already taken."
     });
   }
@@ -194,6 +195,15 @@ export const postEdit = async (req, res) => {
   // 세션은 업데이트 되지 않았으므로 세션을 다시 설정해줘야 한다
   req.session.user = updatedUser;
   return res.redirect("/users/edit");
+};
+
+export const getChangePassword = (req, res) => {
+  return res.render("users/change-password", { pageTitle: "Change Password" });
+};
+
+export const postChangePassword = (req, res) => {
+  // send notification
+  return res.redirect("/");
 };
 
 export const see = (req, res) => res.send("See User");
