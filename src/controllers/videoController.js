@@ -23,9 +23,15 @@ export const watch = async (req, res) => {
 
 export const getEdit = async (req, res) => {
   const { id } = req.params;
+  const {
+    user: { _id }
+  } = req.session;
   const video = await Video.findById(id);
   if (!video) {
     return res.status(404).render("404", { pageTitle: "❌ Video not found." });
+  }
+  if (String(video.owner) !== String(req.session.user._id)) {
+    return res.status(403).redirect("/");
   }
   return res.render("edit", { pageTitle: `Edit ${video.title}`, video });
 };
@@ -37,6 +43,9 @@ export const postEdit = async (req, res) => {
   const video = await Video.exists({ _id: id });
   if (!video) {
     return res.status(404).render("404", { pageTitle: "❌ Video not found." });
+  }
+  if (String(video.owner) !== String(req.session.user._id)) {
+    return res.status(403).redirect("/");
   }
   // findByIdAndUpdate를 위한 pre middleware는 없다.
   // findByIdAndUpdate는 findOneAndUpdate를 호출하는데
@@ -77,7 +86,7 @@ export const postUpload = async (req, res) => {
       owner: _id,
       hashtags: Video.formatHashtags(hashtags)
     });
-    const user = await User.findById(_id).populate("videos");
+    const user = await User.findById(_id);
     user.videos.push(newVideo._id);
     user.save();
     return res.redirect("/");
@@ -91,6 +100,16 @@ export const postUpload = async (req, res) => {
 
 export const deleteVideo = async (req, res) => {
   const { id } = req.params;
+  const {
+    user: { _id }
+  } = req.session;
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.status(404).render("404", { pageTitle: "❌ Video not found." });
+  }
+  if (String(video.owner) !== String(_id)) {
+    return res.status(403).redirect("/");
+  }
   await Video.findByIdAndDelete(id);
   return res.redirect("/");
 };
