@@ -142,6 +142,16 @@ header .header__logo {
   color: #ff1300;
   font-size: 38px;
 }
+header .header__logo a {
+  display: flex;
+  align-items: center;
+}
+header .header__title {
+  color: white;
+  font-size: 28px;
+  font-weight: 600;
+  margin-left: 10px;
+}
 header ul {
   display: flex;
   justify-content: space-between;
@@ -161,6 +171,11 @@ header .header__btn {
   color: #191919;
   padding: 5px 10px;
   border-radius: 5px;
+}
+header .header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 footer {

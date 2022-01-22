@@ -3,17 +3,10 @@ include ../mixins/video
 
 block content 
     div.profile__data
-        if user.avatarUrl
-            if loggedInUser.socialOnly
-                if loggedInUser.avatarUrl.startsWith("uploads")
-                    img(src="/" + loggedInUser.avatarUrl, width="100", height="100").avatar
-                else
-                    img(src=loggedInUser.avatarUrl, width="100", height="100").avatar
-            else
-                if loggedInUser.avatarUrl.startsWith("uploads")
-                    img(src="/" + loggedInUser.avatarUrl, width="100", height="100").avatar
+        if user.avatarUrl.startsWith("uploads")
+            img(src="/" + user.avatarUrl, width="100", height="100").avatar
         else
-            img(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png").avatar
+            img(src=user.avatarUrl, width="100", height="100").avatar
         h3=user.name
     div.video-grid
         each video in user.videos 

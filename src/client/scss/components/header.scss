@@ -6,6 +6,16 @@ header {
   .header__logo {
     color: $red;
     font-size: 38px;
+    a {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .header__title {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    margin-left: 10px;
   }
   ul {
     display: flex;
@@ -26,5 +36,10 @@ header {
     color: $bg;
     padding: 5px 10px;
     border-radius: 5px;
+  }
+  .header__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
 }
