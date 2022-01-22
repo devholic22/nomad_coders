@@ -1,12 +1,18 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // css를 js와 분리
 const path = require("path"); // 파일까지의 경로
 // console.log(path.resolve(__dirname, "assets", "js")); // 파일까지의 경로 + 나머지 경로
 // console.log(__dirname);
 module.exports = {
   entry: "./src/client/js/main.js", // 작업할 파일
   mode: "development", // 개발중인지 완성 단계인지
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "css/styles.css"
+    })
+  ],
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "assets", "js") // 저장할 곳 (절대 경로)
+    filename: "js/main.js",
+    path: path.resolve(__dirname, "assets") // 저장할 곳 (절대 경로)
   },
   module: {
     rules: [
@@ -21,7 +27,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
         // 역순으로 입력한다. webpack은 역순으로 시작하기 때문
         // sass-loader: scss를 css로 변환한다.
         // css-loader: @import, url()을 해석해준다.
