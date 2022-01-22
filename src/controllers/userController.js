@@ -1,5 +1,4 @@
 import User from "../models/User.js";
-import Video from "../models/Video.js";
 import bcrypt from "bcrypt";
 import fetch from "node-fetch";
 
