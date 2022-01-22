@@ -25,9 +25,6 @@ export const watch = async (req, res) => {
 
 export const getEdit = async (req, res) => {
   const { id } = req.params;
-  const {
-    user: { _id }
-  } = req.session;
   const video = await Video.findById(id);
   if (!video) {
     return res.status(404).render("404", { pageTitle: "❌ Video not found." });
@@ -39,14 +36,17 @@ export const getEdit = async (req, res) => {
 };
 
 export const postEdit = async (req, res) => {
+  const {
+    user: { _id }
+  } = req.session;
   const { id } = req.params;
   const { title, description, hashtags } = req.body;
   // const video = await Video.findById(id);
-  const video = await Video.exists({ _id: id });
+  const video = await Video.findById(id).populate("owner");
   if (!video) {
     return res.status(404).render("404", { pageTitle: "❌ Video not found." });
   }
-  if (String(video.owner) !== String(req.session.user._id)) {
+  if (video.owner._id.toString() !== String(_id)) {
     return res.status(403).redirect("/");
   }
   // findByIdAndUpdate를 위한 pre middleware는 없다.
