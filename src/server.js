@@ -44,6 +44,7 @@ app.use((req, res, next) => {
 
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads")); // 브라우저에게 폴더를 노출시킨다.
+app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
