@@ -4,9 +4,9 @@ import {
   postJoin,
   getLogin,
   postLogin
-} from "../controllers/userController";
-import { home, search } from "../controllers/videoController";
-import { publicOnlyMiddleware } from "../middlewares";
+} from "../controllers/userController.js";
+import { home, search } from "../controllers/videoController.js";
+import { publicOnlyMiddleware } from "../middlewares.js";
 
 const rootRouter = express.Router();
 

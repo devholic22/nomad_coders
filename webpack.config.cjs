@@ -18,6 +18,14 @@ module.exports = {
             presets: [["@babel/preset-env", { targets: "defaults" }]]
           }
         }
+      },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+        // 역순으로 입력한다. webpack은 역순으로 시작하기 때문
+        // sass-loader: scss를 css로 변환한다.
+        // css-loader: @import, url()을 해석해준다.
+        // style-loader: css를 브라우저에 보이게 한다.
       }
     ]
   }
