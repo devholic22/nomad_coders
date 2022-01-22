@@ -5,6 +5,7 @@ const path = require("path"); // 파일까지의 경로
 module.exports = {
   entry: "./src/client/js/main.js", // 작업할 파일
   mode: "development", // 개발중인지 완성 단계인지
+  watch: true, // npm run assets가 계속 실행됨
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css"
@@ -12,7 +13,8 @@ module.exports = {
   ],
   output: {
     filename: "js/main.js",
-    path: path.resolve(__dirname, "assets") // 저장할 곳 (절대 경로)
+    path: path.resolve(__dirname, "assets"), // 저장할 곳 (절대 경로)
+    clean: true // build 하기 전에 폴더를 정리
   },
   module: {
     rules: [
