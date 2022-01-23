@@ -4,6 +4,7 @@ const muteBtn = document.getElementById("mute");
 const volumeRange = document.getElementById("volume");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
+const timeline = document.getElementById("timeline");
 
 let volumeValue = 0.5;
 video.volume = volumeValue;
@@ -50,10 +51,19 @@ const formatTime = (seconds) =>
 
 const handleTimeUpdate = () => {
   currentTime.innerText = formatTime(Math.floor(video.currentTime));
+  timeline.value = Math.floor(video.currentTime);
 };
 
 const handleLoadedMetadata = () => {
   totalTime.innerText = formatTime(Math.floor(video.duration));
+  timeline.max = Math.floor(video.duration);
+};
+
+const handleTimelineChange = (event) => {
+  const {
+    target: { value }
+  } = event;
+  video.currentTime = value;
 };
 
 playBtn.addEventListener("click", handlePlayClick);
@@ -61,6 +71,13 @@ muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
 video.addEventListener("timeupdate", handleTimeUpdate);
 video.addEventListener("loadedmetadata", handleLoadedMetadata);
+timeline.addEventListener("input", handleTimelineChange);
+
+window.addEventListener("keydown", function (event) {
+  if (event.code == "Enter") {
+    handlePlayClick();
+  }
+});
 
 // JS에서 eventlistener를 추가하기 전에 video가 로딩이 되어
 // handleLoadedMetadate()가 아예 안 불러질 수 있으므로 아래 코드 추가
