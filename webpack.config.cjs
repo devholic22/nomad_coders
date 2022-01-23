@@ -3,7 +3,10 @@ const path = require("path"); // 파일까지의 경로
 // console.log(path.resolve(__dirname, "assets", "js")); // 파일까지의 경로 + 나머지 경로
 // console.log(__dirname);
 module.exports = {
-  entry: "./src/client/js/main.js", // 작업할 파일
+  entry: {
+    main: "./src/client/js/main.js",
+    VideoPlayer: "./src/client/js/videoPlayer.js"
+  }, // 작업할 파일
   mode: "development", // 개발중인지 완성 단계인지
   watch: true, // npm run assets가 계속 실행됨
   plugins: [
@@ -12,7 +15,7 @@ module.exports = {
     })
   ],
   output: {
-    filename: "js/main.js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"), // 저장할 곳 (절대 경로)
     clean: true // build 하기 전에 폴더를 정리
   },
