@@ -3,6 +3,6 @@ import { registerView } from "../controllers/videoController.js";
 
 const apiRouter = express.Router();
 
-apiRouter.post("/vides/:id([0-9a-f]{24})/view", registerView);
+apiRouter.post("/videos/:id([0-9a-f]{24})/view", registerView);
 
 export default apiRouter;
