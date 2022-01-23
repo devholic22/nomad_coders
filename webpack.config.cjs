@@ -5,7 +5,8 @@ const path = require("path"); // 파일까지의 경로
 module.exports = {
   entry: {
     main: "./src/client/js/main.js",
-    VideoPlayer: "./src/client/js/videoPlayer.js"
+    videoPlayer: "./src/client/js/videoPlayer.js",
+    recorder: "./src/client/js/recorder.js"
   }, // 작업할 파일
   mode: "development", // 개발중인지 완성 단계인지
   watch: true, // npm run assets가 계속 실행됨
