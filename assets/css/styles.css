@@ -193,15 +193,26 @@ footer {
 }
 .video-mixin .video-mixin__data {
   padding: 0px 15px;
+  display: flex;
+}
+.video-mixin .video-mixin__data .video_mixin__img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  top: 5px;
+  right: 5px;
 }
 .video-mixin .video-mixin__data .video-mixin__title {
   font-size: 18px;
   display: block;
   margin-top: 10px;
+  margin-bottom: 6px;
 }
 .video-mixin .video-mixin__data .video-mixin__meta {
   margin-top: 5px;
   font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .empty__message {
