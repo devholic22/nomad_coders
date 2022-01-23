@@ -45,19 +45,22 @@ const handleVolumeChange = (event) => {
   muteBtn.innerText = Number(value) === 0 ? "Unmute" : "Mute";
 };
 
-const handleLoadedMetadata = () => {
-  totalTime.innerText = Math.floor(video.duration);
-};
+const formatTime = (seconds) =>
+  new Date(seconds * 1000).toISOString().substring(11, 19);
 
 const handleTimeUpdate = () => {
-  currentTime.innerText = Math.floor(video.currentTime);
+  currentTime.innerText = formatTime(Math.floor(video.currentTime));
+};
+
+const handleLoadedMetadata = () => {
+  totalTime.innerText = formatTime(Math.floor(video.duration));
 };
 
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
-video.addEventListener("loadedmetadata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
+video.addEventListener("loadedmetadata", handleLoadedMetadata);
 
 // JS에서 eventlistener를 추가하기 전에 video가 로딩이 되어
 // handleLoadedMetadate()가 아예 안 불러질 수 있으므로 아래 코드 추가
