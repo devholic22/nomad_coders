@@ -13,12 +13,15 @@ app.get("/*", (req, res) => res.redirect("/"));
 const handleListen = () => console.log(`Listening on http://localhost:3000`);
 
 const server = http.createServer(app);
-const wss = new WebSocketServer({ server }); // http의 서버 위에 ws 서버를 올려둠으로써 같은 포트에서 운용할 수 있다.
+const ws = new WebSocketServer({ server }); // http의 서버 위에 ws 서버를 올려둠으로써 같은 포트에서 운용할 수 있다.
 
-function handleConnection(backSocket) {
-  console.log(backSocket);
-}
-
-wss.on("connection", handleConnection);
+ws.on("connection", (backSocket) => {
+  console.log("✅ Connected to the Browser");
+  backSocket.on("close", () => console.log("❌ Disconnected from the Browser"));
+  backSocket.on("message", (message) => {
+    console.log(message.toString("utf8"));
+  });
+  backSocket.send("hello!!!");
+});
 
 server.listen(3000, handleListen);
