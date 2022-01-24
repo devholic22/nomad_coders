@@ -19,16 +19,30 @@ block content
             div
                 span#fullScreen
                     i.fas.fa-expand
-    //- div
-    //-     p=video.description
-    //-     small=video.createdAt
-    //- div 
-    //-     small Uploaded by 
-    //-         a(href=`/users/${video.owner._id}`) #{video.owner.name}
-    //- if String(video.owner._id) === String(loggedInUser._id)
-    //-     a(href=`${video.id}/edit`) 🛠 Edit Video &rarr;
-    //-     br
-    //-     a(href=`${video.id}/delete`) ❌ Delete Video &rarr;
+    div
+        p.hashtags=video.hashtags
+        p.title=video.title
+        div.meta_and_edit
+            div.meta
+                span 조회수 #{video.meta.views}회 
+                span • #{video.createdAt}
+            div.edit
+                if String(video.owner._id) === String(loggedInUser._id)
+                    a(href=`${video.id}/edit`) 🛠 Edit Video 
+                    a(href=`${video.id}/delete`) ❌ Delete Video
+        hr
+    div.bottom_info
+        div.bottom_info__img
+            a(href=`/users/${video.owner._id}`)
+                if video.owner.avatarUrl.startsWith("uploads")
+                    img.owner_logo(src="/" + video.owner.avatarUrl)
+                else
+                    img.owner_logo(src=video.owner.avatarUrl)
+        div.bottom_info__text
+            span.owner_name
+                a(href=`/users/${video.owner._id}`) #{video.owner.name}
+            div.else_info__text 
+                p.description=video.description
 
 block scripts
     script(src="/static/js/videoPlayer.js")

@@ -395,6 +395,48 @@ input[type=submit],
   text-decoration: underline;
 }
 
+.hashtags {
+  color: dodgerblue;
+  margin: 5px 0px 5px 0px;
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 17px;
+}
+
+.meta {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.meta_and_edit {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit a {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.bottom_info {
+  display: flex;
+  align-items: center;
+}
+
+.owner_logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.owner_name {
+  display: block;
+}
+
 a {
   color: inherit;
   text-decoration: none;
