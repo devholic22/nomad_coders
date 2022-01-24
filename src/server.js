@@ -15,12 +15,18 @@ const handleListen = () => console.log(`Listening on http://localhost:3000`);
 const server = http.createServer(app);
 const ws = new WebSocketServer({ server }); // http의 서버 위에 ws 서버를 올려둠으로써 같은 포트에서 운용할 수 있다.
 
+function onSocketClose() {
+  console.log("❌ Disconnected from the Browser");
+}
+
+function onSocketMessage(message) {
+  console.log(message.toString("utf8"));
+}
+
 ws.on("connection", (backSocket) => {
   console.log("✅ Connected to the Browser");
-  backSocket.on("close", () => console.log("❌ Disconnected from the Browser"));
-  backSocket.on("message", (message) => {
-    console.log(message.toString("utf8"));
-  });
+  backSocket.on("close", onSocketClose);
+  backSocket.on("message", onSocketMessage);
   backSocket.send("hello!!!");
 });
 

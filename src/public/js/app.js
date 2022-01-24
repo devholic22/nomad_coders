@@ -1,16 +1,22 @@
 const frontSocket = new WebSocket(`ws://${window.location.host}`);
 
-frontSocket.addEventListener("open", () => {
+function handleOpen() {
   console.log("✅ Connected to the Server");
-});
+}
 
-frontSocket.addEventListener("message", (message) => {
+function onSocketMessage(message) {
   console.log("New message: ", message.data);
-});
+}
 
-frontSocket.addEventListener("close", () => {
+function handleClose() {
   console.log("❌ Disconnected from the Server");
-});
+}
+
+frontSocket.addEventListener("open", handleOpen);
+
+frontSocket.addEventListener("message", onSocketMessage);
+
+frontSocket.addEventListener("close", handleClose);
 
 setTimeout(() => {
   frontSocket.send("hello from the browser.");
