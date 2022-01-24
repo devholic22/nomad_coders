@@ -19,15 +19,16 @@ function onSocketClose() {
   console.log("❌ Disconnected from the Browser");
 }
 
-function onSocketMessage(message) {
-  console.log(message.toString("utf8"));
-}
+const sockets = [];
 
 ws.on("connection", (backSocket) => {
+  sockets.push(backSocket);
   console.log("✅ Connected to the Browser");
   backSocket.on("close", onSocketClose);
-  backSocket.on("message", onSocketMessage);
-  backSocket.send("hello!!!");
+  backSocket.on("message", (message) => {
+    sockets.forEach((anySocket) => anySocket.send(message.toString()));
+    // backSocket.send(message.toString());
+  });
 });
 
 server.listen(3000, handleListen);
