@@ -1,2 +1,3 @@
-# js_todo_clone
-노마드코더의 js 크롬 앱 만들기 강의를 바탕으로 만들어보는 혼자 만들어보는 투두리스트 레포지토리
+# todo_list
+
+figma를 이용해 만든 투두 리스트를 Node.js + express + mongoDB를 이용하여 만들어본 레포지토리입니다.
