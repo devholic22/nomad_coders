@@ -17,21 +17,27 @@
     <div class="middle-img modified-img">
       <img src="resource/signup.svg" />
     </div>
-    <form class="enter-form">
+    <form class="enter-form" method="POST">
+      <%if (typeof errorMessage != 'undefined') { %>
+      <span class="enter-form__error"><%=errorMessage%></span>
+      <% } %>
       <input
         type="text"
+        name="email"
         class="enter-form__input"
         placeholder="enter email"
         required
       />
       <input
         type="text"
+        name="name"
         class="enter-form__input"
         placeholder="enter name"
         required
       />
       <input
         type="password"
+        name="password"
         class="enter-form__input"
         placeholder="enter password"
         required

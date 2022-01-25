@@ -1,4 +1,12 @@
 import express from "express";
+import {
+  getLogin,
+  postLogin,
+  getSignup,
+  postSignup
+} from "./controllers/userController";
+import "./db";
+import "./models/User";
 
 const app = express();
 const PORT = 9000;
@@ -9,20 +17,15 @@ const handleListening = () =>
 const handleHome = (req, res) => {
   return res.redirect("/login");
 };
-const handleLogin = (req, res) => {
-  return res.render("login.html");
-};
-const handleSignup = (req, res) => {
-  return res.render("signup.html");
-};
 
 app.engine("html", require("ejs").renderFile);
 app.set("views", process.cwd() + "/src/views");
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", handleHome);
-app.get("/login", handleLogin);
-app.get("/signup", handleSignup);
+app.route("/login").get(getLogin).post(postLogin);
+app.route("/signup").get(getSignup).post(postSignup);
 
 app.listen(PORT, handleListening);
