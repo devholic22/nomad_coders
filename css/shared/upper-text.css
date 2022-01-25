@@ -1,0 +1,13 @@
+.upper-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 130px;
+}
+.upper-text__title {
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+.upper-text__subtitle {
+  font-size: 17px;
+}
