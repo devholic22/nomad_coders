@@ -1,0 +1,29 @@
+{
+  "name": "todo_list",
+  "version": "1.0.0",
+  "description": "todo-list with node.js from figma",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devholic22/todo_list.git"
+  },
+  "author": "Hyunjoon Choi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devholic22/todo_list/issues"
+  },
+  "homepage": "https://github.com/devholic22/todo_list#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  }
+}
