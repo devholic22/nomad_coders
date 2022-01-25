@@ -6,6 +6,9 @@
 @import "./shared/enter-form.css";
 @import "./shared/lower-text.css";
 
+/* modified */
+@import "./modified/modified-img.css";
+
 body {
   height: 100%;
   font-family: "Amatic SC", cursive;
