@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/devholic22/wetube_clone#readme",
   "dependencies": {
+    "@ffmpeg/core": "^0.10.0",
+    "@ffmpeg/ffmpeg": "^0.10.1",
     "bcrypt": "^5.0.0",
     "connect-mongo": "^4.6.0",
     "dotenv": "^14.2.0",
