@@ -251,7 +251,6 @@ export const see = async (req, res) => {
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found." });
   }
-  console.log(user);
   // const videos = await Video.find({ owner: user._id });
   return res.render("users/profile", {
     pageTitle: user.name,
