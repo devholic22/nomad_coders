@@ -10,6 +10,7 @@ function onLoginSubmit(event) {
   loginForm.classList.add(HIDDEN_CLASSNAME);
   greeting.innerText = "Hello " + username;
   greeting.classList.remove(HIDDEN_CLASSNAME);
+  localStorage.setItem("username", username);
 }
 
 loginForm.addEventListener("submit", onLoginSubmit);
