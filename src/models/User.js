@@ -1,21 +1,18 @@
-import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  avatarUrl: String,
-  socialOnly: { type: Boolean, default: false },
   username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String },
-  location: String,
+  location: { type: String },
+  avatarUrl: { type: String, default: process.env.DEFAULT_AVATAR },
   videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }]
 });
 
-userSchema.pre("save", async function () {
-  if (this.isModified("password")) {
-    this.password = await bcrypt.hash(this.password, 5);
-  }
+userSchema.static("passwordHash", async function (password) {
+  password = await bcrypt.hash(password, 5);
+  return password;
 });
 
 const User = mongoose.model("User", userSchema);

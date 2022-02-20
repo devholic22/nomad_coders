@@ -1,13 +1,16 @@
 extends base
 include mixins/video
 
-block content 
-    form(method="GET").search__form
-        input(placeholder="Search by title", type="text", name="keyword")
-        button
-            i.fas.fa-search
-    div.video-grid
-        each video in videos
-            +video(video)
-        else
-            span.empty__message No videos found.
+block content
+    form(method="GET").search-form
+        input(type="text", placeholder="title, desc, tags...", name="value", value=value, required).search-form__input
+        input(type="submit", value="Search!")
+    div.search__results
+        if value
+            if videos.length >= 1
+                each video in videos
+                    +videos(video)
+                    hr
+            if videos.length == 0
+                span.search__nothing 🙅 Sorry nothing found...
+        

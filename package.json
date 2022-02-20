@@ -1,49 +1,36 @@
 {
-  "name": "wetube_clone",
+  "name": "wetube_recap",
   "version": "1.0.0",
-  "description": "wetube clone by nomad coders",
-  "type": "module",
+  "description": "Hyunjoon Choi",
   "scripts": {
     "dev:server": "nodemon",
-    "dev:assets": "webpack"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devholic22/wetube_clone.git"
+    "dev:assets": "webpack --config webpack.config.cjs"
   },
   "author": "Hyunjoon Choi",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/devholic22/wetube_clone/issues"
-  },
-  "homepage": "https://github.com/devholic22/wetube_clone#readme",
   "dependencies": {
-    "@ffmpeg/core": "^0.8.5",
-    "@ffmpeg/ffmpeg": "^0.9.7",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
-    "dotenv": "^14.2.0",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
-    "mongoose": "^6.1.6",
+    "mongoose": "^6.2.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.4",
-    "node-fetch": "^3.2.0",
-    "pug": "^3.0.2",
-    "regenerator-runtime": "^0.13.9"
+    "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
+    "@babel/core": "^7.17.2",
     "@babel/node": "^7.16.8",
-    "@babel/preset-env": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
     "babel-loader": "^8.2.3",
-    "css-loader": "^6.5.1",
-    "mini-css-extract-plugin": "^2.5.2",
+    "css-loader": "^6.6.0",
+    "mini-css-extract-plugin": "^2.5.3",
     "nodemon": "^2.0.15",
-    "sass": "^1.49.0",
-    "sass-loader": "^12.4.0",
+    "sass": "^1.49.8",
+    "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
-    "webpack": "^5.67.0",
-    "webpack-cli": "^4.9.1"
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
   }
 }

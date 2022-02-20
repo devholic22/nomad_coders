@@ -1,2 +1,14 @@
-.video__grid {
+.home_contents {
+  padding: 15px;
+  .home_contents__welcome {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .home_contents__videos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 80px;
+  }
 }

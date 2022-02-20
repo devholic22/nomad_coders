@@ -1,28 +1,19 @@
-.edit-profile__contents {
+.login-contents {
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
   border-radius: 5px;
   margin: 80px 300px 0px 300px;
   padding: 20px;
-  .edit-profile__title {
-    font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 10px;
+  .errorMsg {
+    text-align: center;
   }
-  .edit-profile__img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-  .edit-profile__form,
-  .edit-profile__password,
-  .edit-profile__delete {
+  .login-contents__form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     input {
-      margin-bottom: 10px;
+      margin: 10px 0px 10px 0px;
       width: 200px;
       border-style: none;
       border-radius: 5px;
@@ -38,5 +29,11 @@
     border: 1px solid gray;
     width: 100%;
     margin: 30px 0px 30px 0px;
+  }
+  .login-contents__footer {
+    text-align: center;
+    a {
+      color: cornflowerblue;
+    }
   }
 }

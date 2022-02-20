@@ -1,28 +1,25 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // css를 js와 분리
-const path = require("path"); // 파일까지의 경로
-// console.log(path.resolve(__dirname, "assets", "js")); // 파일까지의 경로 + 나머지 경로
-// console.log(__dirname);
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
+
 module.exports = {
-  entry: {
-    main: "./src/client/js/main.js",
-    videoPlayer: "./src/client/js/videoPlayer.js",
-    recorder: "./src/client/js/recorder.js"
-  }, // 작업할 파일
-  mode: "development", // 개발중인지 완성 단계인지
-  watch: true, // npm run assets가 계속 실행됨
+  entry: "./src/client/js/main.js", // 바꾸고자 하는 파일
+  mode: "development", // 개발 중인지, 완료(production) 되었는지 (default: production)
+  watch: true,
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css"
     })
   ],
   output: {
-    filename: "js/[name].js",
-    path: path.resolve(__dirname, "assets"), // 저장할 곳 (절대 경로)
-    clean: true // build 하기 전에 폴더를 정리
+    // 결과물 지정
+    filename: "js/main.js",
+    path: path.resolve(__dirname, "assets"),
+    clean: true
   },
   module: {
     rules: [
       {
+        // 모든 js 파일에 대해서 babel-loader로 브라우저가 이해할 수 있는 옛 코드로 전환시킨다
         test: /\.js$/,
         use: {
           loader: "babel-loader",
@@ -31,16 +28,16 @@ module.exports = {
           }
         }
       },
+      // scss
+      // scss -> normal css (sass-loader) 1
+      // css-loader (import, url...) 2
+      // css into website (style-loader) 3 // X
+      // MiniCssExtractPlugin -> css 코드 분리하여 별도 파일로 저장
       {
         test: /\.scss$/,
+        // webpack은 역순으로 실행됨
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-        // 역순으로 입력한다. webpack은 역순으로 시작하기 때문
-        // sass-loader: scss를 css로 변환한다.
-        // css-loader: @import, url()을 해석해준다.
-        // style-loader: css를 브라우저에 보이게 한다.
       }
     ]
   }
 };
-// rules는 각각의 파일 종류에 따라 어떤 전환을 할 건지 결정하는 것이다.
-// 즉 babel-loder를 통해 test 파일들을 변경하는 것이다.

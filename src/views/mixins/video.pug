@@ -1,17 +1,15 @@
-mixin video(video)
-    div.video-mixin
+mixin videos(video)
+    div.video_container
         a(href=`/videos/${video.id}`)
-            div.video-mixin__thumb 
-        div.video-mixin__data
-            a(href=`/users/${video.owner._id}`)
-                if video.owner.avatarUrl.startsWith("uploads")
-                    img.video_mixin__img(src="/" + video.owner.avatarUrl)
-                else
-                    img.video_mixin__img(src=video.owner.avatarUrl)
-            div.video-mixin__text
-                a(href=`/videos/${video.id}`)
-                    span.video-mixin__title=video.title
-                a(href=`/users/${video.owner._id}`)
-                    div.video-mixin__meta
-                        span #{video.owner.name} • 
-                        span #{video.meta.views} 회
+            div.video_container__shortcut
+        div.video_container__info
+            a(href=`/users/${video.owner.username}`)
+                if video.owner.avatarUrl
+                    img(src=`/${video.owner.avatarUrl}`).video_container__logo
+                else 
+                    img(src=`/${user.avatarUrl}`).video_container__logo
+            a(href=`/videos/${video.id}`)
+                div.video_container__text
+                    span.video_container__title #{video.title}
+                    span.video_container__views 조회수 #{video.meta.views}회
+                    span.video_container__date=video.createdAt

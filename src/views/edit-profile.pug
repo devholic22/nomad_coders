@@ -1,14 +1,24 @@
 extends base
 
-block content 
-    form(method="POST", enctype="multipart/form-data").edit-profile__form
-        label(for="avatar") Profile Image
-        input(type="file", id="avatar", accept="image/*", name="avatar")
-        input(placeholder="Name", name="name", type="text", required, value=loggedInUser.name)
-        input(placeholder="Email", name="email", type="text", required, value=loggedInUser.email)
-        input(placeholder="Username", name="username", type="text", required, value=loggedInUser.username)
-        input(placeholder="Location", name="location", type="text", required, value=loggedInUser.location)
-        input(type="submit", value="Update Profile")
-        if !loggedInUser.socialOnly 
-            div.edit-profile__password
-                a(href="change-password") Change Password &rarr;
+block content
+    div.edit-profile__contents
+        span.edit-profile__title Change Profile Info
+        img(src=`/${loggedInUser.avatarUrl}`).edit-profile__img
+        form(method="POST", enctype="multipart/form-data").edit-profile__form
+            label(for="avatar") Avatar
+            input(type="file", id="avatar", name="avatar", accept=".png, .jpg, .jpeg")
+            input(type="text" placeholder="username" value=loggedInUser.username, name="username" required)
+            input(type="email" placeholder="email" value=loggedInUser.email, name="email" required)
+            input(type="submit" value="Save!")
+        hr
+        span.edit-profile__title Change Password
+        if errorMsg
+            span=errorMsg
+        form(method="POST", action="change-password").edit-profile__password
+            input(type="password", placeholder="Origin Password", name="originPassword", required)
+            input(type="password", placeholder="New Password", name="newPassword" required)
+            input(type="submit", value="Change!")
+        hr
+        span.edit-profile__title Delete User
+        form(method="POST", action="delete").edit-profile__delete
+            input(type="submit" value="Delete User")

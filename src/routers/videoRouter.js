@@ -6,25 +6,20 @@ import {
   getUpload,
   postUpload,
   deleteVideo
-} from "../controllers/videoController.js";
-import { protectorMiddleware, videoUpload } from "../middlewares.js";
+} from "../controllers/videoController";
+import { loggedInOnly, videoUpload } from "../middlewares";
 
 const videoRouter = express.Router();
 
-videoRouter.get("/:id([0-9a-f]{24})", watch);
-videoRouter
-  .route("/:id([0-9a-f]{24})/edit")
-  .all(protectorMiddleware)
-  .get(getEdit)
-  .post(postEdit);
-videoRouter
-  .route("/:id([0-9a-f]{24})/delete")
-  .all(protectorMiddleware)
-  .get(deleteVideo);
 videoRouter
   .route("/upload")
-  .all(protectorMiddleware)
-  .get(getUpload)
-  .post(videoUpload.single("video"), postUpload);
+  .get(loggedInOnly, getUpload)
+  .post(loggedInOnly, videoUpload.single("video"), postUpload);
+videoRouter.get("/:id", watch);
+videoRouter
+  .route("/:id/edit")
+  .get(loggedInOnly, getEdit)
+  .post(loggedInOnly, postEdit);
+videoRouter.get("/:id/delete", loggedInOnly, deleteVideo);
 
 export default videoRouter;
