@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   location: { type: String },
   avatarUrl: { type: String, default: process.env.DEFAULT_AVATAR },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }]
 });
 
