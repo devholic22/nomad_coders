@@ -1,8 +1,13 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
+const BASE_JS = "./src/client/js/";
+
 module.exports = {
-  entry: "./src/client/js/main.js", // 바꾸고자 하는 파일
+  entry: {
+    main: BASE_JS + "main.js", // 바꾸고자 하는 파일
+    commentSection: BASE_JS + "commentSection.js"
+  },
   mode: "development", // 개발 중인지, 완료(production) 되었는지 (default: production)
   watch: true,
   plugins: [
@@ -12,7 +17,7 @@ module.exports = {
   ],
   output: {
     // 결과물 지정
-    filename: "js/main.js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),
     clean: true
   },

@@ -1,7 +1,7 @@
 extends base
 
 block content
-    div.watch-contents
+    div#videoContainer.watch-contents(data-id=video._id)
         video(src=`/${video.fileUrl}` controls) 
         if video.hashtags != null
             ul.watch-contents__hashtags
@@ -25,3 +25,10 @@ block content
                     img(src=`/${video.owner.avatarUrl}`).watch-contents__img
                 a(href=`/users/${video.owner.username}`)
                     span=video.owner.username
+        if loggedIn
+            div.video__comments
+                form.video__comment-form#commentForm
+                    input(type="text", placeholder="Write a comment...", required)
+                    input(type="submit", value="Add!")
+block scripts 
+    script(src="/static/js/commentSection.js")
