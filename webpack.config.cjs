@@ -8,8 +8,7 @@ module.exports = {
     main: BASE_JS + "main.js", // 바꾸고자 하는 파일
     commentSection: BASE_JS + "commentSection.js"
   },
-  mode: "development", // 개발 중인지, 완료(production) 되었는지 (default: production)
-  watch: true,
+  // mode: "development", // 개발 중인지, 완료(production) 되었는지 (default: production)
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css"
