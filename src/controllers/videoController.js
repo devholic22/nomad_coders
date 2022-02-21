@@ -12,6 +12,7 @@ export const home = async (req, res) => {
 
 export const watch = async (req, res) => {
   const { id } = req.params;
+  console.log("watch", id);
   if (id.length == 24) {
     const video = await Video.findById(id).populate("owner");
     // const owner = await User.findById(video.owner);
@@ -133,4 +134,9 @@ export const search = async (req, res) => {
   // 3. Hashtags... (developing...)
 
   return res.render("search", { pageTitle: "🔎 Search Videos", videos, value });
+};
+
+export const createComment = (req, res) => {
+  console.log(req.params);
+  console.log(req.body);
 };
