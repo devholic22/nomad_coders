@@ -25,10 +25,15 @@ block content
                     img(src=`/${video.owner.avatarUrl}`).watch-contents__img
                 a(href=`/users/${video.owner.username}`)
                     span=video.owner.username
+        hr
         if loggedIn
-            div.video__comments
+            div.video__add-comments
                 form.video__comment-form#commentForm
                     input(type="text", placeholder="Write a comment...", required)
                     input(type="submit", value="Add!")
+        div.video__comments
+            ul 
+                each comment in video.comments.reverse()
+                    li.video__comment=comment.text
 block scripts 
     script(src="/static/js/commentSection.js")

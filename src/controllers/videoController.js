@@ -13,9 +13,10 @@ export const home = async (req, res) => {
 
 export const watch = async (req, res) => {
   const { id } = req.params;
-  console.log("watch", id);
   if (id.length == 24) {
-    const video = await Video.findById(id).populate("owner");
+    const video = await Video.findById(id)
+      .populate("owner")
+      .populate("comments");
     // const owner = await User.findById(video.owner);
     if (!video) {
       return res.status(404).render("error", { pageTitle: "Video not found." });
@@ -153,5 +154,8 @@ export const createComment = async (req, res) => {
     owner: user._id,
     video: id
   });
+  console.log(comment);
+  video.comments.push(comment._id);
+  video.save();
   return res.sendStatus(201);
 };
