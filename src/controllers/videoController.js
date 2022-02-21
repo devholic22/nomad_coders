@@ -1,5 +1,6 @@
 import Video from "../models/Video";
 import User from "../models/User";
+import Comment from "../models/Comment";
 
 export const home = async (req, res) => {
   try {
@@ -136,7 +137,21 @@ export const search = async (req, res) => {
   return res.render("search", { pageTitle: "🔎 Search Videos", videos, value });
 };
 
-export const createComment = (req, res) => {
-  console.log(req.params);
-  console.log(req.body);
+export const createComment = async (req, res) => {
+  const {
+    session: { user },
+    body: { text },
+    params: { id }
+  } = req;
+
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.sendStatus(404);
+  }
+  const comment = await Comment.create({
+    text,
+    owner: user._id,
+    video: id
+  });
+  return res.sendStatus(201);
 };

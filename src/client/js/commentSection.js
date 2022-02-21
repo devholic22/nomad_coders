@@ -13,6 +13,7 @@ const handleSubmit = (event) => {
     },
     body: JSON.stringify({ text })
   });
+  comment.value = "";
 };
 
 if (form) {
