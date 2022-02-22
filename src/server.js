@@ -19,14 +19,18 @@ const handleListening = () =>
 const server = http.createServer(app); // http 분리
 const wss = new WebSocket.Server({ server }); // ws 분리 (http와 같은 PORT)
 
+const sockets = []; // fake Socket Database
+
 // backEnd webSocket이 frontEnd와 연결되었다면 실행될 함수
 wss.on("connection", (socketWithFront) => {
+  console.log(socketWithFront);
   console.log("✅ Connected to Browser");
+  sockets.push(socketWithFront);
+  socketWithFront.on("message", (message) => {
+    sockets.forEach((socket) => socket.send(message.toString("utf-8")));
+  });
   socketWithFront.on("close", () => console.log("❌ Disconnected to Browser"));
-  socketWithFront.on("message", (message) =>
-    console.log(message.toString("utf-8"))
-  );
-  socketWithFront.send("hello!");
+  // socketWithFront.send("hello!");
 });
 
 server.listen(PORT, handleListening);
