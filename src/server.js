@@ -25,8 +25,19 @@ const sockets = []; // fake Socket Database
 wss.on("connection", (socketWithFront) => {
   console.log("✅ Connected to Browser");
   sockets.push(socketWithFront);
+  socketWithFront["nickname"] = "Anon";
   socketWithFront.on("message", (message) => {
-    sockets.forEach((socket) => socket.send(JSON.parse(message).content));
+    const parsedMessage = JSON.parse(message);
+    switch (parsedMessage.type) {
+      case "nickname":
+        socketWithFront["nickname"] = parsedMessage.content;
+        break;
+      case "chat":
+        sockets.forEach((socket) =>
+          socket.send(`${socketWithFront.nickname}: ${parsedMessage.content}`)
+        );
+        break;
+    }
   });
   socketWithFront.on("close", () => console.log("❌ Disconnected to Browser"));
   // socketWithFront.send("hello!");

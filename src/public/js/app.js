@@ -34,7 +34,7 @@ const handleSubmitNickname = (event) => {
 const handleSubmit = (event) => {
   event.preventDefault();
   const input = messageForm.querySelector("input");
-  socketWithBack.send(input.value);
+  socketWithBack.send(makeMessage("chat", input.value));
   input.value = "";
 };
 
