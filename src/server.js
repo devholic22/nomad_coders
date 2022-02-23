@@ -23,8 +23,16 @@ wsServer.on("connection", (socketWithFront) => {
   socketWithFront.on("enter_room", (roomName, showRoom) => {
     socketWithFront.join(roomName);
     showRoom();
-    console.log(socketWithFront.rooms);
     socketWithFront.to(roomName).emit("welcome");
+  });
+  socketWithFront.on("disconnecting", () => {
+    socketWithFront.rooms.forEach((room) =>
+      socketWithFront.to(room).emit("goodbye")
+    );
+  });
+  socketWithFront.on("new_message", (msg, room, done) => {
+    socketWithFront.to(room).emit("new_message", msg);
+    done();
   });
 });
 httpServer.listen(PORT, handleListening);
