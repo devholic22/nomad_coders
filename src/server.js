@@ -1,5 +1,5 @@
 import http from "http";
-import WebSocket from "ws";
+import { Server } from "socket.io";
 import express from "express";
 
 const app = express();
@@ -16,31 +16,11 @@ app.get("/*", (req, res) => res.redirect("/"));
 const handleListening = () =>
   console.log(`✅ Server listening on: http://localhost:${PORT}`);
 
-const server = http.createServer(app); // http 분리
-const wss = new WebSocket.Server({ server }); // ws 분리 (http와 같은 PORT)
+const httpServer = http.createServer(app); // http 분리
+const wsServer = new Server(httpServer);
 
-const sockets = []; // fake Socket Database
-
-// backEnd webSocket이 frontEnd와 연결되었다면 실행될 함수
-wss.on("connection", (socketWithFront) => {
-  console.log("✅ Connected to Browser");
-  sockets.push(socketWithFront);
-  socketWithFront["nickname"] = "Anon";
-  socketWithFront.on("message", (message) => {
-    const parsedMessage = JSON.parse(message);
-    switch (parsedMessage.type) {
-      case "nickname":
-        socketWithFront["nickname"] = parsedMessage.content;
-        break;
-      case "chat":
-        sockets.forEach((socket) =>
-          socket.send(`${socketWithFront.nickname}: ${parsedMessage.content}`)
-        );
-        break;
-    }
-  });
-  socketWithFront.on("close", () => console.log("❌ Disconnected to Browser"));
-  // socketWithFront.send("hello!");
+wsServer.on("connection", (socket) => {
+  console.log(socket);
 });
 
-server.listen(PORT, handleListening);
+httpServer.listen(PORT, handleListening);
