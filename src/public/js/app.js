@@ -5,7 +5,15 @@ const form = welcome.querySelector("form");
 const room = document.getElementById("room");
 
 room.hidden = true;
+
 let roomName;
+
+const addMessage = (message) => {
+  const ul = room.querySelector("ul");
+  const li = document.createElement("li");
+  li.innerText = message;
+  ul.appendChild(li);
+};
 
 const showRoom = () => {
   welcome.hidden = true;
@@ -23,3 +31,7 @@ const handleRoomSubmit = (event) => {
 };
 
 form.addEventListener("submit", handleRoomSubmit);
+
+socketWithBack.on("welcome", () => {
+  addMessage("Someone joined this room!");
+});

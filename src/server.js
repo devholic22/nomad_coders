@@ -22,8 +22,9 @@ const wsServer = new Server(httpServer);
 wsServer.on("connection", (socketWithFront) => {
   socketWithFront.on("enter_room", (roomName, showRoom) => {
     socketWithFront.join(roomName);
-    console.log(socketWithFront.rooms);
     showRoom();
+    console.log(socketWithFront.rooms);
+    socketWithFront.to(roomName).emit("welcome");
   });
 });
 httpServer.listen(PORT, handleListening);
