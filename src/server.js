@@ -19,8 +19,11 @@ const handleListening = () =>
 const httpServer = http.createServer(app); // http 분리
 const wsServer = new Server(httpServer);
 
-wsServer.on("connection", (socket) => {
-  socket.on("enter_room", (msg) => console.log(msg));
+wsServer.on("connection", (socketWithFront) => {
+  socketWithFront.on("enter_room", (roomName, showRoom) => {
+    socketWithFront.join(roomName);
+    console.log(socketWithFront.rooms);
+    showRoom();
+  });
 });
-
 httpServer.listen(PORT, handleListening);
