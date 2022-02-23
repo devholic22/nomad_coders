@@ -20,7 +20,7 @@ const httpServer = http.createServer(app); // http 분리
 const wsServer = new Server(httpServer);
 
 wsServer.on("connection", (socket) => {
-  console.log(socket);
+  socket.on("enter_room", (msg) => console.log(msg));
 });
 
 httpServer.listen(PORT, handleListening);
