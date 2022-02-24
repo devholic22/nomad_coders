@@ -20,19 +20,25 @@ const httpServer = http.createServer(app); // http 분리
 const wsServer = new Server(httpServer);
 
 wsServer.on("connection", (socketWithFront) => {
+  socketWithFront["nickname"] = "Anon";
   socketWithFront.on("enter_room", (roomName, showRoom) => {
     socketWithFront.join(roomName);
     showRoom();
-    socketWithFront.to(roomName).emit("welcome");
+    socketWithFront.to(roomName).emit("welcome", socketWithFront.nickname);
   });
   socketWithFront.on("disconnecting", () => {
     socketWithFront.rooms.forEach((room) =>
-      socketWithFront.to(room).emit("goodbye")
+      socketWithFront.to(room).emit("goodbye", socketWithFront.nickname)
     );
   });
   socketWithFront.on("new_message", (msg, room, done) => {
-    socketWithFront.to(room).emit("new_message", msg);
+    socketWithFront
+      .to(room)
+      .emit("new_message", `${socketWithFront.nickname} : ${msg}`);
     done();
+  });
+  socketWithFront.on("nickname", (nickname) => {
+    socketWithFront["nickname"] = nickname;
   });
 });
 httpServer.listen(PORT, handleListening);
