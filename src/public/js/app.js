@@ -61,11 +61,15 @@ const handleRoomSubmit = (event) => {
 
 form.addEventListener("submit", handleRoomSubmit);
 
-socketWithBack.on("welcome", (user) => {
+socketWithBack.on("welcome", (user, newCount) => {
+  const h3 = room.querySelector("h3");
+  h3.innerText = `Room name: ${roomName} (${newCount})`;
   addMessage(`${user} joined this room!`);
 });
 
-socketWithBack.on("goodbye", (user) => {
+socketWithBack.on("goodbye", (user, newCount) => {
+  const h3 = room.querySelector("h3");
+  h3.innerText = `Room name: ${roomName} (${newCount})`;
   goodBye(`${user} left this room!`);
 });
 

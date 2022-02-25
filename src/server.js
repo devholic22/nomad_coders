@@ -28,35 +28,50 @@ const getPublicRooms = () => {
       publicRooms.push(key);
     }
   });
-  return publicRooms;
+  return publicRooms; // public room만 추출
+};
+
+// 들어온 유저 수 처리
+const countUser = (roomName) => {
+  return wsServer.sockets.adapter.rooms.get(roomName)?.size;
 };
 
 wsServer.on("connection", (socketWithFront) => {
   socketWithFront["nickname"] = "Anon";
+
   socketWithFront.onAny((event) => {
     console.log(wsServer.sockets.adapter);
     console.log(`Socket Event: ${event}`);
   });
+
   socketWithFront.on("enter_room", (roomName, showRoom) => {
     socketWithFront.join(roomName);
     showRoom();
-    socketWithFront.to(roomName).emit("welcome", socketWithFront.nickname);
+    socketWithFront
+      .to(roomName)
+      .emit("welcome", socketWithFront.nickname, countUser(roomName));
     wsServer.sockets.emit("room_change", getPublicRooms());
   });
+
   socketWithFront.on("disconnecting", () => {
     socketWithFront.rooms.forEach((room) =>
-      socketWithFront.to(room).emit("goodbye", socketWithFront.nickname)
+      socketWithFront
+        .to(room)
+        .emit("goodbye", socketWithFront.nickname, countUser(room) - 1)
     );
   });
+
   socketWithFront.on("disconnect", () => {
     wsServer.sockets.emit("room_change", getPublicRooms());
   });
+
   socketWithFront.on("new_message", (msg, room, done) => {
     socketWithFront
       .to(room)
       .emit("new_message", `${socketWithFront.nickname} : ${msg}`);
     done();
   });
+
   socketWithFront.on("nickname", (nickname) => {
     socketWithFront["nickname"] = nickname;
   });
