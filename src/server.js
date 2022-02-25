@@ -41,11 +41,15 @@ wsServer.on("connection", (socketWithFront) => {
     socketWithFront.join(roomName);
     showRoom();
     socketWithFront.to(roomName).emit("welcome", socketWithFront.nickname);
+    wsServer.sockets.emit("room_change", getPublicRooms());
   });
   socketWithFront.on("disconnecting", () => {
     socketWithFront.rooms.forEach((room) =>
       socketWithFront.to(room).emit("goodbye", socketWithFront.nickname)
     );
+  });
+  socketWithFront.on("disconnect", () => {
+    wsServer.sockets.emit("room_change", getPublicRooms());
   });
   socketWithFront.on("new_message", (msg, room, done) => {
     socketWithFront
