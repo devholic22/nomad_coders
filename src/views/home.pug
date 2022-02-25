@@ -8,22 +8,11 @@ html(lang="en")
         title Noom
     body 
         header
-            h1 It works!
+            h1 Noom
         main 
-            div#welcome
-                form
-                    input(type="text", placeholder="room name", required)
-                    button Enter Room
-                h4 Open Rooms:
-                ul
-            div#room
-                h3
-                ul
-                form#nickname
-                    input(type="text", placeholder="Write a nickname", required)
-                    button Save Nickname
-                form#msg
-                    input(type="text" placeholder="Write a message", required)
-                    button Send Message
+            div#myStream
+                video#myFace(autoplay, playsinline, width="400", height="400")
+                button#mute Mute
+                button#camera Turn Camera Off
         script(src="/socket.io/socket.io.js")
         script(src="/public/js/app.js") 

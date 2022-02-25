@@ -1,5 +1,6 @@
 const socketWithBack = io();
 
+/* Chat
 const welcome = document.getElementById("welcome");
 const form = welcome.querySelector("form");
 const room = document.getElementById("room");
@@ -86,3 +87,50 @@ socketWithBack.on("room_change", (rooms) => {
     roomList.appendChild(li);
   });
 });
+*/
+
+/* Video */
+const myFace = document.getElementById("myFace");
+const muteBtn = document.getElementById("mute");
+const cameraBtn = document.getElementById("camera");
+
+let myStream;
+let muted = false;
+let cameraOff = false;
+
+const getMedia = async () => {
+  try {
+    myStream = await navigator.mediaDevices.getUserMedia({
+      audio: false,
+      video: true
+    });
+    myFace.srcObject = myStream;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const handleMuteClick = () => {
+  if (!muted) {
+    muteBtn.innerText = "Unmute";
+    muted = true;
+  } else {
+    muteBtn.innerText = "Mute";
+    muted = false;
+  }
+};
+
+const handleCameraClick = () => {
+  if (cameraOff) {
+    cameraBtn.innerText = "Turn Camera Off";
+    cameraOff = false;
+  } else {
+    cameraBtn.innerText = "Turn Camera On";
+    cameraOff = true;
+  }
+};
+
+getMedia();
+
+muteBtn.addEventListener("click", handleMuteClick);
+cameraBtn.addEventListener("click", handleCameraClick);
