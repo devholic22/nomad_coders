@@ -19,8 +19,24 @@ const handleListening = () =>
 const httpServer = http.createServer(app); // http 분리
 const wsServer = new Server(httpServer);
 
+const getPublicRooms = () => {
+  const sids = wsServer.sockets.adapter.sids;
+  const rooms = wsServer.sockets.adapter.rooms;
+  const publicRooms = [];
+  rooms.forEach((_, key) => {
+    if (sids.get(key) === undefined) {
+      publicRooms.push(key);
+    }
+  });
+  return publicRooms;
+};
+
 wsServer.on("connection", (socketWithFront) => {
   socketWithFront["nickname"] = "Anon";
+  socketWithFront.onAny((event) => {
+    console.log(wsServer.sockets.adapter);
+    console.log(`Socket Event: ${event}`);
+  });
   socketWithFront.on("enter_room", (roomName, showRoom) => {
     socketWithFront.join(roomName);
     showRoom();
