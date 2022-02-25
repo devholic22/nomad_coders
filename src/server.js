@@ -1,5 +1,6 @@
 import http from "http";
 import { Server } from "socket.io";
+import { instrument } from "@socket.io/admin-ui";
 import express from "express";
 
 const app = express();
@@ -17,7 +18,16 @@ const handleListening = () =>
   console.log(`✅ Server listening on: http://localhost:${PORT}`);
 
 const httpServer = http.createServer(app); // http 분리
-const wsServer = new Server(httpServer);
+const wsServer = new Server(httpServer, {
+  cors: {
+    origin: ["https://admin.socket.io"],
+    credentials: true
+  }
+});
+
+instrument(wsServer, {
+  auth: false
+});
 
 const getPublicRooms = () => {
   const sids = wsServer.sockets.adapter.sids;
