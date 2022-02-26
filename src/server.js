@@ -31,6 +31,9 @@ wsServer.on("connection", (socketWithFront) => {
     startMedia();
     socketWithFront.to(roomName).emit("welcome");
   });
+  socketWithFront.on("offer", (offer, roomName) => {
+    socketWithFront.to(roomName).emit("offer", offer);
+  });
 });
 instrument(wsServer, {
   auth: false
