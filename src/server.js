@@ -25,6 +25,13 @@ const wsServer = new Server(httpServer, {
   }
 });
 
+wsServer.on("connection", (socketWithFront) => {
+  socketWithFront.on("join_room", (roomName, startMedia) => {
+    socketWithFront.join(roomName);
+    startMedia();
+    socketWithFront.to(roomName).emit("welcome");
+  });
+});
 instrument(wsServer, {
   auth: false
 });
