@@ -18,6 +18,7 @@
 <img src="https://user-images.githubusercontent.com/90085154/140651056-0f753643-b125-4ed9-be30-adca31731b96.gif" height="40%" width="40%">
 <img src="https://user-images.githubusercontent.com/90085154/140651058-e5bb923e-5c8c-4d64-8b4d-0c819e77c1ba.gif" height="40%" width="40%">
 <img src="https://user-images.githubusercontent.com/90085154/140651059-87f3af96-551d-4bbf-acad-561a7427c5ea.gif" height="40%" width="40%">
+
 ## 구현한 기능
 
 - [x] 실시간 시계 구현 (js의 Date 사용)
