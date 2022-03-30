@@ -1,7 +1,17 @@
 import express from "express";
 
 const app = express();
+const PORT = 3000;
 
-console.log("hello");
+app.set("view engine", "pug");
+app.set("views", __dirname + "/views");
+app.use("/public", express.static(__dirname + "/public"));
 
-app.listen(3000);
+app.get("/", (req, res) => {
+  return res.render("home");
+});
+const handleListen = () => {
+  console.log(`Listening on http://localhost:${PORT}`);
+};
+
+app.listen(PORT, handleListen);
