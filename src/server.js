@@ -18,5 +18,8 @@ const handleListen = () => {
 
 const server = http.createServer(app);
 const wss = new WebSocketServer.Server({ server });
-
+const handleConnection = (socketFromFront) => {
+  console.log(socketFromFront);
+};
+wss.on("connection", handleConnection);
 server.listen(PORT, handleListen);
