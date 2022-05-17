@@ -18,4 +18,11 @@ const handleListen = () => console.log(`Listening on http://localhost:${PORT}`);
 const server = http.createServer(app);
 const wss = new WebSocket.WebSocketServer({ server });
 
+const handleConnection = (socketWithClient) => {
+  console.log(socketWithClient);
+};
+wss.on("connection", handleConnection);
+// socket은 연결된 브라우저와의 contact line이다.
+// on 메소드는 백엔드에 연결된 사람의 정보를 제공해주고 그게 socket에서 온다
+
 server.listen(PORT, handleListen);
