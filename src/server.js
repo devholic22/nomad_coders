@@ -18,10 +18,23 @@ const handleListen = () => console.log(`Listening on http://localhost:${PORT}`);
 const server = http.createServer(app);
 const wss = new WebSocket.WebSocketServer({ server });
 
-const handleConnection = (socketWithClient) => {
-  console.log(socketWithClient);
-};
-wss.on("connection", handleConnection);
+// connection event
+wss.on("connection", (socketWithClient) => {
+  console.log("Connected to Browser ✅");
+
+  // close event
+  socketWithClient.on("close", () =>
+    console.log("Disconnected from Browser ❌")
+  );
+
+  // message event
+  socketWithClient.on("message", (message) => {
+    console.log(message.toString("utf-8"));
+  });
+
+  // send message
+  socketWithClient.send("hello!");
+});
 // socket은 연결된 브라우저와의 contact line이다.
 // on 메소드는 백엔드에 연결된 사람의 정보를 제공해주고 그게 socket에서 온다
 
