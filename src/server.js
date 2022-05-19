@@ -17,6 +17,7 @@ const handleListen = () => console.log(`Listening on http://localhost:${PORT}`);
 // http와 webSocket을 같이 쓰고 싶은 경우..
 const server = http.createServer(app);
 const wss = new WebSocket.WebSocketServer({ server });
+// wss는 서버 전체를 위한 것, socket event는 특정 socket에서 이벤트가 발생했을 때 응답하는 것
 
 // connection event
 wss.on("connection", (socketWithClient) => {
