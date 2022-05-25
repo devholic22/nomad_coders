@@ -29,16 +29,19 @@ socketWithBack.addEventListener("close", () => {
 const makeMessage = (type, payload) => {
   const msg = { type, payload };
   return JSON.stringify(msg);
+  // 프론트와 백엔드에서 쓰는 언어가 자바스크립트가 아닐 수도 있으므로 자바스크립트 오브젝트 말고 string 형태로 보내야 한다
 };
 
 const handleNickSubmit = (event) => {
+  console.log("nick submit");
   event.preventDefault();
   const input = nickForm.querySelector("input");
-  socketWithBack.send(makeMessage("nick", input.value));
+  socketWithBack.send(makeMessage("nickname", input.value));
   input.value = "";
 };
 
 const handleSubmit = (event) => {
+  console.log("msg submit");
   event.preventDefault();
   const input = messageForm.querySelector("input");
   socketWithBack.send(makeMessage("new_message", input.value));

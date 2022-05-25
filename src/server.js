@@ -22,9 +22,20 @@ const wss = new WebSocket.WebSocketServer({ server });
 // fake DB
 const sockets = [];
 
+const joinAlert = () => {
+  sockets.forEach((socket) => {
+    console.log(socket.nickname);
+    socket.send(`${socket.nickname} Joined this room`); // 에러... 일단 스킵
+  });
+};
+
 // connection event
 wss.on("connection", (socketWithClient) => {
+  const anonCount =
+    sockets.filter((socket) => socket.nickname.includes("Anon")).length + 1;
+  socketWithClient["nickname"] = `Anon${anonCount}`;
   sockets.push(socketWithClient);
+  setTimeout(joinAlert, 1000);
   console.log("Connected to Browser ✅");
 
   // close event
@@ -33,8 +44,23 @@ wss.on("connection", (socketWithClient) => {
   );
 
   // message event
-  socketWithClient.on("message", (message) => {
-    sockets.forEach((socket) => socket.send(message.toString("utf-8")));
+  socketWithClient.on("message", (msg) => {
+    const message = JSON.parse(msg);
+    switch (message.type) {
+      case "new_message":
+        sockets.forEach((socket) =>
+          socket.send(`${socketWithClient.nickname}: ${message.payload}`)
+        );
+        break;
+      case "nickname":
+        sockets.forEach((socket) =>
+          socket.send(
+            `${socketWithClient.nickname}이 ${message.payload}로 이름 변경`
+          )
+        );
+        socketWithClient["nickname"] = message.payload;
+        break;
+    }
     // console.log(message.toString("utf-8"));
     // socketWithClient.send(message.toString("utf-8"));
   });
