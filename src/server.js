@@ -81,6 +81,13 @@ const wsServer = new Server(httpServer);
 
 wsServer.on("connection", (socketWithClient) => {
   console.log(socketWithClient);
+  socketWithClient.on("enter_room", (msg, done) => {
+    console.log(msg);
+    setTimeout(() => {
+      done(); // 서버는 백엔드에서 함수를 호출하지만 함수는 front에서 실행된 것이다
+      // 함수 내용은 front에서 적는데 언제 실행하는지는 서버에서 지정하는 것
+    }, 5000);
+  });
 });
 
 httpServer.listen(PORT, handleListen);

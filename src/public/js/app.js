@@ -54,3 +54,16 @@ messageForm.addEventListener("submit", handleSubmit);
 */
 const socketWithBack = io(); // 자동적으로 백엔드 socket.io와 연결해주는 function
 // 알아서 socket.io를 실행하는 서버를 찾는다
+const welcome = document.getElementById("welcome");
+const form = welcome.querySelector("form");
+
+function handleRoomSubmit(event) {
+  event.preventDefault();
+  const input = form.querySelector("input");
+  socketWithBack.emit("enter_room", { payload: input.value }, () => {
+    console.log("server is done!");
+  });
+  input.value = "";
+}
+
+form.addEventListener("submit", handleRoomSubmit);
