@@ -1,3 +1,4 @@
+/*
 const messageList = document.querySelector("ul");
 const nickForm = document.querySelector("#nick");
 const messageForm = document.querySelector("#message");
@@ -50,3 +51,6 @@ const handleSubmit = (event) => {
 
 nickForm.addEventListener("submit", handleNickSubmit);
 messageForm.addEventListener("submit", handleSubmit);
+*/
+const socketWithBack = io(); // 자동적으로 백엔드 socket.io와 연결해주는 function
+// 알아서 socket.io를 실행하는 서버를 찾는다

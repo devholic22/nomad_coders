@@ -1,6 +1,7 @@
 import http from "http";
 import WebSocket from "ws";
 import express from "express";
+import { Server } from "socket.io";
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +14,7 @@ app.get("/", (req, res) => res.render("home"));
 
 const handleListen = () => console.log(`Listening on http://localhost:${PORT}`);
 
+/*
 // app.listen(PORT, handleListen);
 // http와 webSocket을 같이 쓰고 싶은 경우..
 const server = http.createServer(app);
@@ -72,3 +74,13 @@ wss.on("connection", (socketWithClient) => {
 // on 메소드는 백엔드에 연결된 사람의 정보를 제공해주고 그게 socket에서 온다
 
 server.listen(PORT, handleListen);
+*/
+
+const httpServer = http.createServer(app);
+const wsServer = new Server(httpServer);
+
+wsServer.on("connection", (socketWithClient) => {
+  console.log(socketWithClient);
+});
+
+httpServer.listen(PORT, handleListen);
