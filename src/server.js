@@ -79,10 +79,26 @@ server.listen(PORT, handleListen);
 const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
+function publicRooms() {
+  const sids = wsServer.sockets.adapter.sids;
+  const rooms = wsServer.sockets.adapter.rooms;
+  const publicRooms = [];
+  rooms.forEach((_, key) => {
+    if (sids.get(key) === undefined) {
+      publicRooms.push(key);
+    }
+  });
+  return publicRooms;
+}
+
 wsServer.on("connection", (socketWithClient) => {
   socketWithClient["nickname"] = "Anon";
-  socketWithClient.onAny((event) => console.log(`Socket Event: ${event}`));
+  // console.log(wsServer.sockets.adapter);
+  socketWithClient.onAny((event) => {
+    console.log(`Socket Event: ${event}`);
+  });
   socketWithClient.on("enter_room", (roomName, done) => {
+    // console.log(wsServer.sockets.adapter);
     console.log(socketWithClient.rooms);
     socketWithClient.join(roomName);
     console.log(socketWithClient.rooms);
