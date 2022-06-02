@@ -104,6 +104,7 @@ wsServer.on("connection", (socketWithClient) => {
     console.log(socketWithClient.rooms);
     done();
     socketWithClient.to(roomName).emit("welcome", socketWithClient.nickname);
+    wsServer.sockets.emit("room_change", publicRooms()); // 모든 room에 전달
     /*
     setTimeout(() => {
       done(); // 서버는 백엔드에서 함수를 호출하지만 함수는 front에서 실행된 것이다
@@ -115,6 +116,9 @@ wsServer.on("connection", (socketWithClient) => {
     socketWithClient.rooms.forEach((room) =>
       socketWithClient.to(room).emit("bye", socketWithClient.nickname)
     );
+  });
+  socketWithClient.on("disconnect", () => {
+    wsServer.sockets.emit("room_change", publicRooms());
   });
   socketWithClient.on("new_message", (msg, room, done) => {
     socketWithClient
