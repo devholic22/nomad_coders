@@ -80,13 +80,14 @@ const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
 wsServer.on("connection", (socketWithClient) => {
+  socketWithClient["nickname"] = "Anon";
   socketWithClient.onAny((event) => console.log(`Socket Event: ${event}`));
   socketWithClient.on("enter_room", (roomName, done) => {
     console.log(socketWithClient.rooms);
     socketWithClient.join(roomName);
     console.log(socketWithClient.rooms);
     done();
-    socketWithClient.to(roomName).emit("welcome");
+    socketWithClient.to(roomName).emit("welcome", socketWithClient.nickname);
     /*
     setTimeout(() => {
       done(); // 서버는 백엔드에서 함수를 호출하지만 함수는 front에서 실행된 것이다
@@ -96,13 +97,19 @@ wsServer.on("connection", (socketWithClient) => {
   });
   socketWithClient.on("disconnecting", () => {
     socketWithClient.rooms.forEach((room) =>
-      socketWithClient.to(room).emit("bye")
+      socketWithClient.to(room).emit("bye", socketWithClient.nickname)
     );
   });
   socketWithClient.on("new_message", (msg, room, done) => {
-    socketWithClient.to(room).emit("new_message", msg);
+    socketWithClient
+      .to(room)
+      .emit("new_message", `${socketWithClient.nickname} : ${msg}`);
     done();
   });
+  socketWithClient.on(
+    "nickname",
+    (nickname) => (socketWithClient["nickname"] = nickname)
+  );
 });
 
 httpServer.listen(PORT, handleListen);
