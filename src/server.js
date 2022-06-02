@@ -1,36 +1,46 @@
-import http from "http";
-import WebSocket from "ws";
+import "./db";
+import User from "./models/User"; // User db 등록
+import Chat from "./models/Chat"; // Chat db 등록
+import MongoStore from "connect-mongo";
 import express from "express";
+import session from "express-session";
+import globalRouter from "./router/globalRouter";
+import { logInMiddleware } from "./middleware";
+import http from "http";
 import { Server } from "socket.io";
 
 const app = express();
 const PORT = 3000;
+const httpServer = http.createServer(app);
+const wsServer = new Server(httpServer);
 
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 app.use("/public", express.static(__dirname + "/public"));
-
-app.get("/", (req, res) => res.render("home"));
+app.use(express.json());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.DB_URL
+    })
+  })
+);
+app.use(express.urlencoded({ extended: true }));
+app.use(logInMiddleware);
+app.use("/", globalRouter);
 
 const handleListen = () => console.log(`Listening on http://localhost:${PORT}`);
 
-/*
-// app.listen(PORT, handleListen);
-// http와 webSocket을 같이 쓰고 싶은 경우..
-const server = http.createServer(app);
-const wss = new WebSocket.WebSocketServer({ server });
-// wss는 서버 전체를 위한 것, socket event는 특정 socket에서 이벤트가 발생했을 때 응답하는 것
-
-// fake DB
-const sockets = [];
-
-const joinAlert = () => {
-  sockets.forEach((socket) => {
-    console.log(socket.nickname);
-    socket.send(`${socket.nickname} Joined this room`); // 에러... 일단 스킵
-  });
+const countUser = (roomId) => {
+  return wsServer.sockets.adapter.rooms.get(roomId)?.size;
 };
 
+<<<<<<< HEAD
+/* 소켓 처리 부분 */
+=======
 // connection event
 wss.on("connection", (socketWithClient) => {
   const anonCount =
@@ -91,18 +101,23 @@ function publicRooms() {
   return publicRooms;
 }
 
+>>>>>>> parent of 12c0876 (2.10 User Count)
 wsServer.on("connection", (socketWithClient) => {
-  socketWithClient["nickname"] = "Anon";
-  // console.log(wsServer.sockets.adapter);
-  socketWithClient.onAny((event) => {
-    console.log(`Socket Event: ${event}`);
+  socketWithClient.on("visit", (roomId) => {
+    socketWithClient.join(roomId);
+    console.log("visit");
+    console.log(wsServer.sockets.adapter.rooms);
+    socketWithClient.to(roomId).emit("test", countUser(roomId));
   });
-  socketWithClient.on("enter_room", (roomName, done) => {
-    // console.log(wsServer.sockets.adapter);
-    console.log(socketWithClient.rooms);
-    socketWithClient.join(roomName);
-    console.log(socketWithClient.rooms);
+  socketWithClient.on("new_message", (roomId, msg, done) => {
+    socketWithClient.to(roomId).emit("new_message", `${msg}`);
     done();
+<<<<<<< HEAD
+  });
+  socketWithClient.on("disconnecting", () => {
+    console.log("disconnecting");
+    console.log(wsServer.sockets.adapter.rooms);
+=======
     socketWithClient.to(roomName).emit("welcome", socketWithClient.nickname);
     wsServer.sockets.emit("room_change", publicRooms()); // 모든 room에 전달
     /*
@@ -116,20 +131,8 @@ wsServer.on("connection", (socketWithClient) => {
     socketWithClient.rooms.forEach((room) =>
       socketWithClient.to(room).emit("bye", socketWithClient.nickname)
     );
+>>>>>>> parent of 12c0876 (2.10 User Count)
   });
-  socketWithClient.on("disconnect", () => {
-    wsServer.sockets.emit("room_change", publicRooms());
-  });
-  socketWithClient.on("new_message", (msg, room, done) => {
-    socketWithClient
-      .to(room)
-      .emit("new_message", `${socketWithClient.nickname} : ${msg}`);
-    done();
-  });
-  socketWithClient.on(
-    "nickname",
-    (nickname) => (socketWithClient["nickname"] = nickname)
-  );
 });
 
 httpServer.listen(PORT, handleListen);
