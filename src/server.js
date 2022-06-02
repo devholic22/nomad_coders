@@ -80,13 +80,18 @@ const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
 wsServer.on("connection", (socketWithClient) => {
-  console.log(socketWithClient);
-  socketWithClient.on("enter_room", (msg, done) => {
-    console.log(msg);
+  socketWithClient.onAny((event) => console.log(`Socket Event: ${event}`));
+  socketWithClient.on("enter_room", (roomName, done) => {
+    console.log(socketWithClient.rooms);
+    socketWithClient.join(roomName);
+    console.log(socketWithClient.rooms);
+    done();
+    /*
     setTimeout(() => {
       done(); // 서버는 백엔드에서 함수를 호출하지만 함수는 front에서 실행된 것이다
       // 함수 내용은 front에서 적는데 언제 실행하는지는 서버에서 지정하는 것
     }, 5000);
+    */
   });
 });
 

@@ -56,13 +56,24 @@ const socketWithBack = io(); // 자동적으로 백엔드 socket.io와 연결해
 // 알아서 socket.io를 실행하는 서버를 찾는다
 const welcome = document.getElementById("welcome");
 const form = welcome.querySelector("form");
+const room = document.getElementById("room");
+
+room.hidden = true;
+
+let roomName;
+
+function showRoom() {
+  welcome.hidden = true;
+  room.hidden = false;
+  const h3 = room.querySelector("h3");
+  h3.innerText = `Room ${roomName}`;
+}
 
 function handleRoomSubmit(event) {
   event.preventDefault();
   const input = form.querySelector("input");
-  socketWithBack.emit("enter_room", { payload: input.value }, () => {
-    console.log("server is done!");
-  });
+  socketWithBack.emit("enter_room", input.value, showRoom);
+  roomName = input.value;
   input.value = "";
 }
 
