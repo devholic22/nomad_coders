@@ -104,11 +104,15 @@ function handleRoomSubmit(event) {
   input.value = "";
 }
 
-socketWithBack.on("welcome", (user) => {
+socketWithBack.on("welcome", (user, newCount) => {
+  const h3 = room.querySelector("h3");
+  h3.innerText = `Room ${roomName} (${newCount})`;
   addMessage(`${user} arrived!`);
 });
 
-socketWithBack.on("bye", (user) => {
+socketWithBack.on("bye", (user, newCount) => {
+  const h3 = room.querySelector("h3");
+  h3.innerText = `Room ${roomName} (${newCount})`;
   addMessage(`${user} left`);
 });
 
