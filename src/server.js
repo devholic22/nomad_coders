@@ -86,6 +86,7 @@ wsServer.on("connection", (socketWithClient) => {
     socketWithClient.join(roomName);
     console.log(socketWithClient.rooms);
     done();
+    socketWithClient.to(roomName).emit("welcome");
     /*
     setTimeout(() => {
       done(); // 서버는 백엔드에서 함수를 호출하지만 함수는 front에서 실행된 것이다
