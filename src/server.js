@@ -94,6 +94,15 @@ wsServer.on("connection", (socketWithClient) => {
     }, 5000);
     */
   });
+  socketWithClient.on("disconnecting", () => {
+    socketWithClient.rooms.forEach((room) =>
+      socketWithClient.to(room).emit("bye")
+    );
+  });
+  socketWithClient.on("new_message", (msg, room, done) => {
+    socketWithClient.to(room).emit("new_message", msg);
+    done();
+  });
 });
 
 httpServer.listen(PORT, handleListen);
