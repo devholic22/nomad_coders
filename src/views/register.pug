@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="icon", href="data:;base64,iVBORw0KGgo=")
+        link(rel="stylesheet", href="public/css/register.css")
+        title Register
+    body 
+        h1 Register Page 
+        if errorMsg
+            span=errorMsg
+        form(method="POST").registerForm
+            input(type="text", name="name", placeholder="이름", required)
+            input(type="email", name="email", placeholder="이메일", required)
+            input(type="password", name="password", placeholder="비밀번호", required)
+            input(type="submit", value="등록") 
+        a(href="login") 로그인하기

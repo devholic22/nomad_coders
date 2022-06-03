@@ -3,27 +3,25 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
-        title Noom
+        link(rel="icon", href="data:;base64,iVBORw0KGgo=")
+        title Document
     body 
-        header 
-            h1 Noom
-        main
-            div#welcome
-                form
-                    input(placeholder="room name", required, type="text")
-                    button Enter Room
-                h4 Open Rooms: 
-                ul
-            div#room
-                h3
-                ul
-                form#name
-                    input(placeholder="nickname", required, type="text")
-                    button Send
-                form#msg
-                    input(placeholder="message", required, type="text")
-                    button Send
-        script(src="/socket.io/socket.io.js")
-        script(src="/public/js/app.js") 
+        h1 👋 채팅 시스템 실험 사이트입니다
+        if loggedIn
+            span 안녕하세요! #{loggedInUser.name}님
+            ul
+                li
+                    form(method="POST" action="/logout")
+                        input(type="submit" value="로그아웃하기")
+            span 유저 목록 (가능한 채팅 목록)
+            ul
+            each user in allUsers
+                if user.id != loggedInUser.id
+                    li
+                        a(href=`${user.id}`)=user.name
+        else
+            ul
+                li
+                    a(href="login") 로그인하기
+                li
+                    a(href="register") 회원가입하기
