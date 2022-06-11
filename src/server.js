@@ -36,16 +36,11 @@ const handleListen = () => console.log(`Listening on http://localhost:${PORT}`);
 
 /* 소켓 처리 부분 */
 wsServer.on("connection", (socketWithClient) => {
-  // console.log("rooms: ", wsServer.sockets.adapter.rooms);
-  // console.log("sids: ", wsServer.sockets.adapter.sids);
-  // console.log(socketWithClient);
-  socketWithClient.on("visit", (userId) => {
-    // console.log(`userId is ${userId}`);
-    socketWithClient.join("test"); // 일단 test 룸에 강제로 join
-    // console.log(socketWithClient.rooms);
+  socketWithClient.on("visit", (roomId) => {
+    socketWithClient.join(roomId);
   });
-  socketWithClient.on("new_message", (msg, done) => {
-    socketWithClient.to("test").emit("new_message", `${msg}`);
+  socketWithClient.on("new_message", (roomId, msg, done) => {
+    socketWithClient.to(roomId).emit("new_message", `${msg}`);
     done();
   });
 });

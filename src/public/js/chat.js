@@ -2,6 +2,9 @@ const socketWithBack = io();
 const chatList = document.getElementById("chatList");
 const chatForm = document.getElementById("chatForm");
 
+const fromUserId = document.querySelector(".fromUserId").innerText.substring(5);
+const toUserId = window.location.href.substring(22);
+
 function addFromMessage(message) {
   const li = document.createElement("li");
   li.innerText = message;
@@ -20,12 +23,16 @@ async function handleMessage(event) {
   event.preventDefault();
   const input = chatForm.querySelector(".chatText");
   const value = input.value;
-  socketWithBack.emit("new_message", value, () => {
-    addToMessage(`${value}`);
-  });
-  const id = window.location.href.substring(22);
+  socketWithBack.emit(
+    "new_message",
+    sortId(fromUserId, toUserId),
+    value,
+    () => {
+      addToMessage(`${value}`);
+    }
+  );
   input.value = "";
-  await fetch(`/${id}`, {
+  await fetch(`/${toUserId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -34,11 +41,15 @@ async function handleMessage(event) {
   });
 }
 
+function sortId(id1, id2) {
+  let result = "";
+  [id1, id2].sort().forEach((id) => (result += id));
+  console.log(result);
+  return result;
+}
+
 socketWithBack.on("new_message", addFromMessage);
 
-const id = window.location.href.substring(22);
-socketWithBack.emit("visit", id);
-
-// socketWithBack.on("enter_room", console.log);
+socketWithBack.emit("visit", sortId(fromUserId, toUserId));
 
 chatForm.addEventListener("submit", handleMessage);

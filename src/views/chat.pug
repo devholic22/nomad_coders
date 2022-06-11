@@ -9,6 +9,7 @@ html(lang="en")
         title Document
     body 
         h1 chat with #{user.name}
+        h2.fromUserId from #{loggedInUser._id}
         ul#chatList
             each chat in chats
                 if String(chat.ownUser._id) == String(user._id)
