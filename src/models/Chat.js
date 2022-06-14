@@ -18,7 +18,8 @@ const chatSchemea = new mongoose.Schema({
   },
   text: { type: String, required: true },
   createdAt: { type: String, required: true },
-  room: { type: String, required: true }
+  room: { type: String, required: true },
+  read: { type: Boolean, enum: [true, false], default: false, required: true }
 });
 
 chatSchemea.static("timeFormat", () => {

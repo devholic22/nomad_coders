@@ -34,14 +34,25 @@ app.use("/", globalRouter);
 
 const handleListen = () => console.log(`Listening on http://localhost:${PORT}`);
 
+const countUser = (roomId) => {
+  return wsServer.sockets.adapter.rooms.get(roomId)?.size;
+};
+
 /* 소켓 처리 부분 */
 wsServer.on("connection", (socketWithClient) => {
   socketWithClient.on("visit", (roomId) => {
     socketWithClient.join(roomId);
+    console.log("visit");
+    console.log(wsServer.sockets.adapter.rooms);
+    socketWithClient.to(roomId).emit("test", countUser(roomId));
   });
   socketWithClient.on("new_message", (roomId, msg, done) => {
     socketWithClient.to(roomId).emit("new_message", `${msg}`);
     done();
+  });
+  socketWithClient.on("disconnecting", () => {
+    console.log("disconnecting");
+    console.log(wsServer.sockets.adapter.rooms);
   });
 });
 

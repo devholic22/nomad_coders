@@ -46,7 +46,8 @@ const postChat = async (req, res) => {
     ownUser: fromUser,
     text: value,
     createdAt: Chat.timeFormat(),
-    room: Chat.roomFormat(String(fromUser._id), String(toUser.id))
+    room: Chat.roomFormat(String(fromUser._id), String(toUser.id)),
+    read: false
   });
 };
 

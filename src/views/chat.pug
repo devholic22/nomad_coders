@@ -10,14 +10,18 @@ html(lang="en")
     body 
         h1 chat with #{user.name}
         h2.fromUserId from #{loggedInUser._id}
-        ul#chatList
-            each chat in chats
-                if String(chat.ownUser._id) == String(user._id)
-                    li.fromMsg #{chat.text}
-                else
-                    li.toMsg #{chat.text}
-        form(method="POST")#chatForm
-            input(type="text" placeholder="채팅 작성" required).chatText
-            input(type="submit" value="send")
+        div#chatRoom
+            ul#chatList
+                each chat in chats
+                    if String(chat.ownUser._id) == String(user._id)
+                        li.fromMsg #{chat.text}
+                    else
+                        div.msgDiv
+                            if chat.read == false
+                                span 1
+                            li.toMsg #{chat.text}
+            form(method="POST")#chatForm
+                input(type="text" placeholder="채팅 작성" required).chatText
+                input(type="submit" value="send")
         script(src="socket.io/socket.io.js")
         script(src="/public/js/chat.js")
