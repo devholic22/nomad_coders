@@ -16,3 +16,27 @@ class Block {
         return crypto_1.default.createHash("sha256").update(toHash).digest("hex");
     }
 }
+class Blockchain {
+    constructor() {
+        this.blocks = [];
+    }
+    getPrevHash() {
+        if (this.blocks.length === 0)
+            return "";
+        return this.blocks[this.blocks.length - 1].hash;
+    }
+    addBlock(data) {
+        const newBlock = new Block(this.getPrevHash(), this.blocks.length + 1, data);
+        this.blocks.push(newBlock);
+    }
+    getBlocks() {
+        return [...this.blocks];
+    }
+}
+const blockchain = new Blockchain();
+blockchain.addBlock("First one");
+blockchain.addBlock("Second one");
+blockchain.addBlock("Third one");
+blockchain.addBlock("Fourth one");
+blockchain.getBlocks().push(new Block("xxxxxx", 11111, "HACKEDDDDDD"));
+console.log(blockchain.getBlocks());
