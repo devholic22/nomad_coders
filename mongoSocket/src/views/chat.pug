@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="icon", href="data:;base64,iVBORw0KGgo=")
+        link(rel="stylesheet", href="public/css/chat.css")
+        title Document
+    body 
+        h1 chat with #{user.name}
+        h2.fromUserId from #{loggedInUser._id}
+        div#chatRoom
+            ul#chatList
+                each chat in chats
+                    if String(chat.ownUser._id) == String(user._id)
+                        li.fromMsg #{chat.text}
+                    else
+                        div.msgDiv
+                            if chat.read == false
+                                span 1
+                            li.toMsg #{chat.text}
+            form(method="POST")#chatForm
+                input(type="text" placeholder="채팅 작성" required).chatText
+                input(type="submit" value="send")
+        script(src="socket.io/socket.io.js")
+        script(src="/public/js/chat.js")
