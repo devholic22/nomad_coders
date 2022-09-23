@@ -1,0 +1,74 @@
+.timeline-main {
+  height: 89%;
+}
+.timeline-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.timeline-story {
+  height: 13%;
+  box-sizing: border-box;
+  padding: 0px 20px;
+}
+.timeline-story__lists {
+  display: flex;
+  height: 100%;
+}
+.timeline-story__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.timeline-story__circle {
+  color: #06c755;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #06c755;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.timeline-welcome {
+  height: 77%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.timeline-welcome__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.timeline-welcome__sub {
+  width: 86%;
+  text-align: center;
+  color: gray;
+}
+.timeline-plus {
+  color: #06c755;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 60px;
+}
+.timeline-plus:hover {
+  animation: sizeCircle 2s ease-in-out infinite;
+}
+@keyframes sizeCircle {
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+  50% {
+    transform: scaleX(1.5) scaleY(1.5);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}

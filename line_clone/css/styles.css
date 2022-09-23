@@ -1,0 +1,38 @@
+@import "./reset.css";
+@import "./components/status-bar.css";
+@import "./components/nav-bar.css";
+@import "./components/title-bar.css";
+@import "./components/no-mobile.css";
+
+@import "./screens/index.css";
+@import "./screens/home.css";
+@import "./screens/talks.css";
+@import "./screens/talk.css";
+@import "./screens/timeline.css";
+@import "./screens/call.css";
+@import "./screens/setting.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+
+html,
+body {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+@keyframes hideSplashScreen {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+#splash-screen img {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  animation: hideSplashScreen 1s ease-in-out forwards;
+}

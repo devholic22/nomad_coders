@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://d.line-scdn.net/n/_s1/_0/linecorp-web-uit/images/favicon_v2.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>LINE - Talk</title>
+  </head>
+  <body>
+    <header class="status-bar">
+      <div class="status-bar__column">
+        <span class="status-bar__company">SKT</span>
+        <span class="status-bar__time"></span>
+      </div>
+      <div class="status-bar__column">
+        <i class="fas fa-wifi internet"></i>
+        <i class="fas fa-signal"></i>
+        <span class="status-bar__percent">100%</span>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </header>
+    <main class="talk-main">
+      <section class="title-bar">
+        <div class="title-bar__column">
+          <a href="talks.html"><i class="fas fa-chevron-left"></i></a>
+          <span class="title-bar__text">Keep 메모</span>
+        </div>
+        <div class="title-bar__column">
+          <i class="fas fa-search"></i>
+          <i class="far fa-bookmark"></i>
+          <i class="fas fa-cog"></i>
+        </div>
+      </section>
+      <div class="talk-box__contents">
+        <div class="talk-time">
+          <div class="talk-time__day">10월 25일 (월)</div>
+          <div class="talk-time__info">
+            <span class="talk-time__info__time">오후 11:13</span>
+            <span class="talk-time__info__sub"
+              >나만 볼 수 있는 대화방에 텍스트, 사진, 링크 등을 간편하게 전송해
+              보세요.</span
+            >
+          </div>
+        </div>
+        <div class="talk-box">
+          <div class="talk-box__stamp">
+            <span class="talk-box__read">읽음</span>
+            <span class="talk-box__time">01:39</span>
+          </div>
+          <div class="talk-box__text">Yeah... It works...</div>
+        </div>
+        <div class="talk-box left">
+          <span class="talk-box__time">01:46</span>
+          <div class="talk-box__text">Yeah!!</div>
+          <img src="./img/profile.png" class="left-img" />
+        </div>
+      </div>
+    </main>
+    <div class="input-bar">
+      <div class="input-bar__column">
+        <i class="fas fa-plus"></i>
+        <i class="fas fa-camera"></i>
+        <i class="far fa-image"></i>
+      </div>
+      <div class="input-bar__column">
+        <input type="text" class="input-bar__input" />
+        <i class="far fa-smile input-bar__smile"></i>
+      </div>
+      <div class="input-bar__column">
+        <i class="fas fa-microphone"></i>
+      </div>
+    </div>
+    <div id="no-mobile">
+      <span>Your screen is too big!!</span>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/6478f529f2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/clock.js"></script>
+    <script src="js/internet.js"></script>
+  </body>
+</html>
