@@ -1,0 +1,9 @@
+.middle-img {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+.middle-img img {
+  width: 300px;
+  height: 300px;
+}

@@ -1,0 +1,25 @@
+@import "reset.css";
+
+/* shared */
+@import "./shared/upper-text.css";
+@import "./shared/middle-img.css";
+@import "./shared/enter-form.css";
+@import "./shared/lower-text.css";
+
+/* modified */
+@import "./modified/modified-img.css";
+
+body {
+  height: 100%;
+  font-family: "Amatic SC", cursive;
+  font-weight: 600;
+}
+input {
+  font-family: "Amatic SC", cursive;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+}
+input[type="submit"] {
+  cursor: pointer;
+}

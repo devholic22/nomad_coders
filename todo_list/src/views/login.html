@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>LOG IN | Momentum</title>
+  </head>
+  <body>
+    <div class="upper-text">
+      <span class="upper-text__title"> welcome to the to-do list app! </span>
+      <span class="upper-text__subtitle">
+        in this app, you can create to-do list and remove it
+      </span>
+    </div>
+    <div class="middle-img">
+      <img src="resource/login.svg" />
+    </div>
+    <form class="enter-form" method="POST">
+      <%if (typeof errorMessage != 'undefined') { %>
+      <span class="enter-form__error"><%=errorMessage%></span>
+      <% } %>
+      <input
+        type="text"
+        name="email"
+        class="enter-form__input"
+        placeholder="enter email"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        class="enter-form__input"
+        placeholder="enter password"
+        required
+      />
+      <input type="submit" class="enter-form__btn" value="log in" />
+    </form>
+    <div class="lower-text">
+      <span class="lower-text__question">don't you have account?</span>
+      <span class="lower-text__link"
+        ><a href="signup">let's go sign up!</a>
+      </span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>SIGN UP | Momentum</title>
+  </head>
+  <body>
+    <div class="upper-text">
+      <span class="upper-text__title"> hello, new user!</span>
+      <span class="upper-text__subtitle">
+        if you join this app, you'll get a better life!
+      </span>
+    </div>
+    <div class="middle-img modified-img">
+      <img src="resource/signup.svg" />
+    </div>
+    <form class="enter-form" method="POST">
+      <%if (typeof errorMessage != 'undefined') { %>
+      <span class="enter-form__error"><%=errorMessage%></span>
+      <% } %>
+      <input
+        type="text"
+        name="email"
+        class="enter-form__input"
+        placeholder="enter email"
+        required
+      />
+      <input
+        type="text"
+        name="name"
+        class="enter-form__input"
+        placeholder="enter name"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        class="enter-form__input"
+        placeholder="enter password"
+        required
+      />
+      <input type="submit" class="enter-form__btn" value="sign up" />
+    </form>
+    <div class="lower-text">
+      <span class="lower-text__question">already have email?</span>
+      <span class="lower-text__link"
+        ><a href="login">let's go log in!</a>
+      </span>
+    </div>
+  </body>
+</html>
