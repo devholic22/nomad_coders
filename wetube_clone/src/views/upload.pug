@@ -1,0 +1,14 @@
+extends base
+
+block content 
+    div.upload__contents
+        if errorMsg
+            span #{errorMsg}
+        span.upload__title Upload Video
+        form(method="POST", enctype="multipart/form-data").upload__form
+            label(for="video") Video File
+            input(type="file", accept="video/*", id="video", name="video", required, style="width: 770px;")
+            input(type="text", placeholder="Title", name="title", required, style="width: 770px;")
+            input(type="text", placeholder="Description", name="description", required, style="width: 770px; height: 300px; resize: none;")
+            input(type="text", placeholder="Hashtags, separated by comma.", name="hashtags", style="width: 770px; height: 40px;")
+            input(type="submit", value="Upload")

@@ -1,0 +1,30 @@
+.header {
+  padding: 10px;
+}
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-nav__logo {
+  font-size: 30px;
+  color: $red;
+}
+.header-nav__logo__text {
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+.header-nav__user,
+.header-nav__anon {
+  display: flex;
+  align-items: center;
+  li {
+    margin-left: 20px;
+  }
+}
+.header-nav__user__img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}

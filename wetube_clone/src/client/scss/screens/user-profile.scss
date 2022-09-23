@@ -1,0 +1,29 @@
+.user_contents {
+  padding: 15px;
+  .user_contents__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 30px;
+    }
+    .user_contents__username {
+      margin-bottom: 20px;
+    }
+  }
+  .user_contents__videos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 80px;
+  }
+  .user_contents__edit {
+    background-color: azure;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+  }
+}

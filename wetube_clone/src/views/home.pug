@@ -1,0 +1,11 @@
+extends base
+include mixins/video
+
+block content 
+    div.home_contents
+        span.home_contents__welcome 👋 Welcome here you will see the trending videos
+        div.home_contents__videos
+            each video in videos 
+                +videos(video)
+            else 
+                h4 🙅 Sorry nothing found.

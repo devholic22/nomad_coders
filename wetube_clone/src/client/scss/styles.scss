@@ -1,0 +1,29 @@
+// Config
+@import "./config/_variables";
+@import "./config/_reset";
+
+// Components
+@import "./components/header";
+@import "./components/footer";
+@import "./components/video";
+
+// Screens
+@import "./screens/home.scss";
+@import "./screens/user-profile";
+@import "./screens/edit-profile";
+@import "./screens/login";
+@import "./screens/join";
+@import "./screens/watch";
+@import "./screens/search";
+@import "./screens/upload.scss";
+
+// Defaults
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  background-color: $bg;
+  color: white;
+}

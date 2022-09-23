@@ -1,0 +1,39 @@
+extends base
+
+block content
+    div#videoContainer.watch-contents(data-id=video._id)
+        video(src=`/${video.fileUrl}` controls) 
+        if video.hashtags != null
+            ul.watch-contents__hashtags
+                for hashtag in video.hashtags
+                    li.watch-contents__hashtag 
+                        a(href=`/search?value=${hashtag.replace("#", "")}`) #{hashtag}
+        span.watch-contents__title=video.title
+        span.watch-contents__info #{video.meta.views} #{video.meta.views === 1 ? "view" : "views"} · #{video.createdAt}
+        hr
+        span=video.description
+        if loggedInUser && (String(video.owner._id) == String(loggedInUser._id))
+            br
+            div.watch-contents__btns
+                span.watch-contents__edit
+                    a(href=`${video.id}/edit`) ✂️ Edit Video
+                span.watch-contents__delete
+                    a(href=`${video.id}/delete`) 🗑 Delete Video
+        else
+            div.watch-contents__owner
+                a(href=`/users/${video.owner.username}`)
+                    img(src=`/${video.owner.avatarUrl}`).watch-contents__img
+                a(href=`/users/${video.owner.username}`)
+                    span=video.owner.username
+        hr
+        if loggedIn
+            div.video__add-comments
+                form.video__comment-form#commentForm
+                    input(type="text", placeholder="Write a comment...", required)
+                    input(type="submit", value="Add!")
+        div.video__comments
+            ul 
+                each comment in video.comments.reverse()
+                    li.video__comment=comment.text
+block scripts 
+    script(src="/static/js/commentSection.js")

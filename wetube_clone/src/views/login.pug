@@ -1,0 +1,14 @@
+extends base
+
+block content 
+    div.login-contents
+        if errorMsg
+            span.errorMsg=errorMsg
+        form(method="POST").login-contents__form
+            input(type="text" placeholder="Username" name="username" required)
+            input(type="password" placeholder="Password" name="password" required)
+            input(type="submit" value="Log in!")
+        hr
+        div.login-contents__footer
+            span Don't have account? 
+            a(href="/join") Join now 

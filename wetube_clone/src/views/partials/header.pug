@@ -1,0 +1,27 @@
+header.header
+        nav
+            ul.header-nav
+                li
+                    a(href="/")
+                        i.fab.fa-youtube.header-nav__logo
+                        span.header-nav__logo__text Wetube
+                if loggedIn
+                    div.header-nav__user
+                        li
+                            a(href="/search") 🔎 Search Video
+                        li 
+                            a(href="/videos/upload") 📹 Upload Video
+                        li 
+                            a(href=`/users/${loggedInUser.username}`)
+                                img(src=`/${loggedInUser.avatarUrl}`).header-nav__user__img
+                        li 
+                            a(href="/users/logout") Log out
+                else
+                    div.header-nav__anon
+                        li
+                            a(href="/search") 🔎 Search Video
+                        li 
+                            a(href="/join") Join
+                        li 
+                            a(href="/login") Login
+        
